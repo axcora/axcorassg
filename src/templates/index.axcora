@@ -1,5 +1,20 @@
 ---
 layouts: base
+css:
+  theme: 'essentials'
+  components:
+    - buttons
+    - video
+    - cards
+    - navbar
+    - alerts
+    - forms
+    - badge
+    - hero
+    - glass
+js:
+  - navbar
+  - theme  
 ---
 <header class="hero mt-5 container">
   <div class="container">

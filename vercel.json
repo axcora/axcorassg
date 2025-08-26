@@ -9,7 +9,7 @@
       }
     }
   ],
-  "buildCommand": "npm install && npx axcora build",
+  "buildCommand": "npm install && npm run build",
   "outputDirectory": "public",
   "framework": null,
   "installCommand": "npm install"
