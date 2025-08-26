@@ -112,5 +112,19 @@ why:
     - text: "Productivity: Reusable UI components, auto-generation of navigation, tags, categories, and feeds minimizes boilerplate."
     - text: "No Lock-in: Standard markdown/YAML content; output is industry-standard HTML/CSS, easy to migrate or deploy anywhere."
     - text: "Modern Development: Suitable for blogs, portfolios, docs sites, landing pages, and more."
-      
+css:
+  theme: 'essentials'
+  components:
+    - buttons
+    - video
+    - cards
+    - navbar
+    - alerts
+    - forms
+    - badge
+    - hero
+    - glass
+js:
+  - navbar
+  - theme      
 ---
