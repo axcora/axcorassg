@@ -9,6 +9,8 @@ dist/
 public/
 .axcora/
 
+static/css/dist/
+
 # Environment
 .env
 .env.local
