@@ -455,11 +455,14 @@ const jsHash = hashConfig(jsSeed); // Pakai fungsi hash yang sama dengan css, de
 const jsBundleName = `axcora${jsHash}.min.js`;
 
 
+const siteUrl = completeData.site && completeData.site.url ? completeData.site.url.replace(/\/$/, '') : '';
 const perPageCssLink = await generatePerPageCSSBundle(cssConfig, globalTheme, bundleName);
-completeData.cssLinks = `<link rel="stylesheet" href="${perPageCssLink}" media="all">`;
+
+completeData.cssLinks = `<link rel="stylesheet" href="${siteUrl}${perPageCssLink}" media="all">`;
+
 
 const perPageJsLink = await generatePerPageJSBundle(jsList, jsBundleName);
-completeData.jsLinks = `<script src="${perPageJsLink}"></script>`;
+completeData.jsLinks = `<script src="${siteUrl}${perPageJsLink}"></script>`;
 
 
     // 🚀 NEW: INJECT META GENERATOR =====
