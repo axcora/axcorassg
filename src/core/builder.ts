@@ -243,7 +243,10 @@ export async function build(options: { isDev: boolean }) {
       await generateCategoriesPages(collections, pluginManager, isDev);
     }
 
-    await copyStaticFiles(isDev);
+    await generateHomepage(collections, pluginManager);
+    await generate404Page(collections, pluginManager);
+	
+	    await copyStaticFiles(isDev);
 	try {
   await fs.mkdir(path.join(PUBLIC_DIR, "css", "dist"), { recursive: true });
   await fs.cp(
@@ -255,9 +258,7 @@ export async function build(options: { isDev: boolean }) {
 } catch (err) {
   console.warn('⚠️ [BUILD] Error copying CSS bundle', err);
 }
-
-    await generateHomepage(collections, pluginManager);
-    await generate404Page(collections, pluginManager);
+	
     await generateSearchIndex(collections, isDev);
     await generateRSSFeed(collections, isDev);
     await generateSitemap(collections, isDev);
