@@ -1,7 +1,7 @@
 # Site Information
 title: "Axcora Framework"
 description: "Modern static site generator with built-in CSS framework"
-url: "http://localhost:3000"
+url: "https://axcora.github.io/axcorassg/"
 author: "Axcora Team"
 image: "/img/axs.jpg"
 logo: "/img/logo.png"
