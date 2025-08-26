@@ -7,7 +7,6 @@ css:
     - video
     - cards
     - navbar
-    - alerts
     - forms
     - badge
     - hero

@@ -395,6 +395,8 @@ const categorySlug = item.category ? slugify(item.category) : '';
 }
 
 async function renderPageWithPlugins(templatePath: string, data: any, outputPath: string, pluginManager: PluginManager) {
+	
+	
   const fullTemplatePath = path.join(TEMPLATES_DIR, templatePath);
   
   try {
