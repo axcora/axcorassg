@@ -1,0 +1,128 @@
+<!-- RSS Component -->
+<div class="rss-container">
+  <div class="rss-info">
+    <h3>📡 RSS Feeds</h3>
+    <p>Stay updated with our latest content through RSS feeds</p>
+  </div>
+  
+  <div class="rss-feeds">
+    <a href="/rss.xml" class="rss-link" target="_blank">
+      <div class="rss-icon">📡</div>
+      <div class="rss-content">
+        <h4>Main RSS Feed</h4>
+        <p>Subscribe to all our latest posts and updates</p>
+      </div>
+    </a>
+    
+    <a href="/sitemap.xml" class="rss-link" target="_blank">
+      <div class="rss-icon">🗺️</div>
+      <div class="rss-content">
+        <h4>Sitemap XML</h4>
+        <p>Complete site structure for search engines</p>
+      </div>
+    </a>
+    
+    <a href="/search.json" class="rss-link" target="_blank">
+      <div class="rss-icon">🔍</div>
+      <div class="rss-content">
+        <h4>Search Index JSON</h4>
+        <p>Machine-readable search index</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="rss-instructions">
+    <h4>How to Subscribe:</h4>
+    <ol>
+      <li>Copy the RSS feed URL: <code>/rss.xml</code></li>
+      <li>Add it to your favorite RSS reader</li>
+      <li>Enjoy automatic updates!</li>
+    </ol>
+  </div>
+</div>
+
+<style>
+.rss-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.rss-info h3 {
+  margin: 0 0 0.5rem;
+  color: #1f2937;
+}
+
+.rss-info p {
+  margin: 0 0 1.5rem;
+  color: #6b7280;
+}
+
+.rss-feeds {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.rss-link {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+
+.rss-link:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+}
+
+.rss-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.rss-content h4 {
+  margin: 0 0 0.25rem;
+  color: #1f2937;
+  font-size: 1rem;
+}
+
+.rss-content p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.rss-instructions {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.rss-instructions h4 {
+  margin: 0 0 1rem;
+  color: #1f2937;
+}
+
+.rss-instructions ol {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #4b5563;
+}
+
+.rss-instructions code {
+  background: #f3f4f6;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+</style>

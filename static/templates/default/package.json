@@ -1,0 +1,14 @@
+{
+  "name": "mysite",
+  "private": true,
+  "description": "Axcora-powered static site",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "axcora dev",
+    "build": "axcora build",
+    "start": "axcora serve"
+  },
+  "dependencies": {
+    "axcora": "^1.0.0"
+  }
+}

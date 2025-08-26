@@ -1,0 +1,28 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gear base -->
+  <g transform="translate(32,32)">
+    <circle r="20" fill="#eceff4" stroke="#a8b0be" stroke-width="4"/>
+    <!-- Gear teeth -->
+    <g stroke="#a8b0be" stroke-width="4" fill="#eceff4">
+      <rect x="-22" y="-4" width="6" height="8" rx="1" transform="rotate(0)"/>
+      <rect x="-22" y="-4" width="6" height="8" rx="1" transform="rotate(60)"/>
+      <rect x="-22" y="-4" width="6" height="8" rx="1" transform="rotate(120)"/>
+      <rect x="-22" y="-4" width="6" height="8" rx="1" transform="rotate(180)"/>
+      <rect x="-22" y="-4" width="6" height="8" rx="1" transform="rotate(240)"/>
+      <rect x="-22" y="-4" width="6" height="8" rx="1" transform="rotate(300)"/>
+    </g>
+  </g>
+
+  <!-- Lightning bolt -->
+  <path d="M28 12 L20 32 L26 32 L18 52 L36 28 L30 28 L38 12 Z" fill="#f6e05e" stroke="#d69e2e" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Wrench silhouette -->
+  <path d="M10 50 L14 46 A6 6 0 0 1 20 44 L22 42 A4 4 0 0 1 26 42 L28 40 A4 4 0 0 1 32 36 L36 32 L30 26 L26 30 L22 28 A4 4 0 0 1 18 30 L16 32 A6 6 0 0 1 12 36 L10 38 Z" fill="#718096" stroke="#4a5568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Speed lines -->
+  <g stroke="#63b3ed" stroke-width="2" stroke-linecap="round">
+    <path d="M2 14 H14"/>
+    <path d="M2 18 H18"/>
+    <path d="M2 22 H22"/>
+  </g>
+</svg>

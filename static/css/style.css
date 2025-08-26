@@ -1,0 +1,290 @@
+/*!
+ * Custom Site CSS - Override Axcora Framework Here
+ * This file loads after axcora-complete.css for customizations
+ */
+
+/* ==========================================================================
+   CUSTOM SITE STYLES
+   ========================================================================== */
+
+/* Gradient backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--info)) !important;
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, var(--success), var(--primary)) !important;
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(135deg, var(--warning), var(--error)) !important;
+}
+
+/* Dark background variations */
+.bg-darker {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.bg-lighter {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-theme="dark"] .bg-lighter {
+  background-color: rgba(30, 41, 59, 0.95) !important;
+}
+
+/* ==========================================================================
+   ENHANCED HERO SECTIONS
+   ========================================================================== */
+
+.hero {
+  background: linear-gradient(135deg, var(--white), var(--surface));
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, var(--surface), var(--background));
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+  50% { transform: translate(-50%, -50%) rotate(180deg); }
+}
+
+/* ==========================================================================
+   ENHANCED CARD EFFECTS
+   ========================================================================== */
+
+.card:hover {
+  transform: translateY(-4px);
+  transition: transform var(--transition-fast) ease;
+  box-shadow: var(--shadow-xl);
+}
+
+.card-hover-lift {
+  transition: all var(--transition-fast) ease;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-2xl);
+}
+
+.card-hover-glow:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+/* ==========================================================================
+   ENHANCED BUTTONS
+   ========================================================================== */
+
+.btn-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border: none;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-gradient:hover::before {
+  left: 100%;
+}
+
+.btn-glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  transition: box-shadow var(--transition-fast) ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+}
+
+/* ==========================================================================
+   LOADING AND ANIMATIONS
+   ========================================================================== */
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+[data-theme="dark"] .loading-screen {
+  background: var(--surface);
+}
+
+.loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  text-align: center;
+}
+
+/* Pulse animation for loading states */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ==========================================================================
+   NOTIFICATION ANIMATIONS
+   ========================================================================== */
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.notification-enter {
+  animation: slideInRight 0.3s ease;
+}
+
+.notification-exit {
+  animation: slideOutRight 0.3s ease;
+}
+
+/* ==========================================================================
+   RESPONSIVE ENHANCEMENTS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .display-1 { font-size: 3rem !important; }
+  .display-2 { font-size: 2.5rem !important; }
+  .display-3 { font-size: 2.25rem !important; }
+  .display-4 { font-size: 2rem !important; }
+  .display-5 { font-size: 1.75rem !important; }
+  .display-6 { font-size: 1.5rem !important; }
+  
+  .hero {
+    padding: 3rem 0;
+  }
+  
+  .card:hover {
+    transform: none; /* Disable hover effects on mobile */
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 2rem 0;
+  }
+  
+  .display-4 {
+    font-size: 1.75rem !important;
+  }
+  
+  .lead {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .hero::before,
+  .card:hover,
+  .btn-gradient::before {
+    display: none !important;
+  }
+  
+  .bg-gradient-primary,
+  .bg-gradient {
+    background: var(--white) !important;
+    color: var(--black) !important;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY IMPROVEMENTS
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .card:hover,
+  .btn-gradient::before,
+  .pulse {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Focus indicators for better accessibility */
+.btn:focus-visible,
+.form-control:focus,
+.form-select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 2px;
+  }
+  
+  .btn {
+    border-width: 2px;
+  }
+}

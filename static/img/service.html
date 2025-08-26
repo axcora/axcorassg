@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Services | Axcora - Custom Development & Consulting</title>
+  <style>
+    /* ===== SERVICES PAGE STYLES ===== */
+    :root {
+      --primary: #6366f1;
+      --secondary: #10b981;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f1f5f9;
+      --glass: rgba(15, 23, 42, 0.82);
+      --border: rgba(148, 163, 184, 0.2);
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --font-sans: system-ui, -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    .services-hero {
+      padding: 8rem 5% 6rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.7));
+    }
+
+    .services-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #fff, var(--light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Service Tiers */
+    .service-tiers {
+      padding: 6rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .tier-card {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 2px solid var(--border);
+      border-radius: 2rem;
+      padding: 3rem 2rem;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tier-card.featured {
+      border-color: var(--primary);
+      transform: scale(1.05);
+      position: relative;
+    }
+
+    .tier-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.5rem 2rem;
+      border-radius: 0 0 1rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+    }
+
+    .tier-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tier-price {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .tier-period {
+      opacity: 0.7;
+      margin-bottom: 2rem;
+    }
+
+    .tier-features {
+      list-style: none;
+      text-align: left;
+      margin: 2rem 0;
+    }
+
+    .tier-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+    }
+
+    .check-icon {
+      color: var(--secondary);
+      font-weight: bold;
+      margin-top: 0.1rem;
+    }
+
+    /* Development Process */
+    .dev-process {
+      padding: 6rem 5%;
+      background: rgba(10, 15, 30, 0.5);
+    }
+
+    .process-timeline {
+      max-width: 1000px;
+      margin: 4rem auto 0;
+      position: relative;
+    }
+
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
+      transform: translateX(-50%);
+    }
+
+    .process-step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .process-step:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .step-content {
+      flex: 1;
+      padding: 2rem;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border-radius: 1.5rem;
+      margin: 0 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .step-number {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    /* Case Studies */
+    .case-studies {
+      padding: 6rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .case-card {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border-radius: 2rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .case-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .case-image {
+      height: 220px;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+    }
+
+    .case-content {
+      padding: 2.5rem;
+    }
+
+    .case-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .process-timeline::before {
+        left: 20px;
+      }
+      
+      .process-step {
+        flex-direction: row !important;
+        padding-left: 50px;
+      }
+      
+      .step-number {
+        left: 20px;
+      }
+      
+      .step-content {
+        margin-left: 0;
+      }
+      
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tier-card.featured {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Services Hero -->
+  <section class="services-hero">
+    <h1>Professional Development Services</h1>
+    <p style="font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">
+      From concept to deployment, we deliver exceptional digital solutions tailored to your business needs
+    </p>
+  </section>
+
+  <!-- Service Tiers -->
+  <section class="service-tiers">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Choose Your Service Level</h2>
+    <p style="text-align: center; opacity: 0.8; max-width: 600px; margin: 0 auto;">
+      Flexible service packages designed to match your project requirements and budget
+    </p>
+
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-icon">🚀</div>
+        <h3>Starter</h3>
+        <div class="tier-price">$2,500</div>
+        <div class="tier-period">One-time project</div>
+        <ul class="tier-features">
+          <li><span class="check-icon">✓</span> Custom theme development</li>
+          <li><span class="check-icon">✓</span> Responsive design</li>
+          <li><span class="check-icon">✓</span> Basic SEO optimization</li>
+          <li><span class="check-icon">✓</span> 3 rounds of revisions</li>
+          <li><span class="check-icon">✓</span> 30-day support</li>
+        </ul>
+        <button style="width: 100%; padding: 1rem; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: white; border: none; border-radius: 1.5rem; font-weight: 600; cursor: pointer;">Get Started</button>
+      </div>
+
+      <div class="tier-card featured">
+        <div class="tier-icon">⭐</div>
+        <h3>Professional</h3>
+        <div class="tier-price">$5,000</div>
+        <div class="tier-period">Complete solution</div>
+        <ul class="tier-features">
+          <li><span class="check-icon">✓</span> Full custom development</li>
+          <li><span class="check-icon">✓</span> Advanced functionality</li>
+          <li><span class="check-icon">✓</span> CMS integration</li>
+          <li><span class="check-icon">✓</span> Performance optimization</li>
+          <li><span class="check-icon">✓</span> Unlimited revisions</li>
+          <li><span class="check-icon">✓</span> 90-day support</li>
+        </ul>
+        <button style="width: 100%; padding: 1rem; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: white; border: none; border-radius: 1.5rem; font-weight: 600; cursor: pointer;">Choose Professional</button>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-icon">🏢</div>
+        <h3>Enterprise</h3>
+        <div class="tier-price">$10,000+</div>
+        <div class="tier-period">Custom quote</div>
+        <ul class="tier-features">
+          <li><span class="check-icon">✓</span> Large-scale applications</li>
+          <li><span class="check-icon">✓</span> Custom architecture</li>
+          <li><span class="check-icon">✓</span> Third-party integrations</li>
+          <li><span class="check-icon">✓</span> Dedicated team</li>
+          <li><span class="check-icon">✓</span> Priority support</li>
+          <li><span class="check-icon">✓</span> 1-year maintenance</li>
+        </ul>
+        <button style="width: 100%; padding: 1rem; background: transparent; color: var(--primary); border: 2px solid var(--primary); border-radius: 1.5rem; font-weight: 600; cursor: pointer;">Contact Sales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Development Process -->
+  <section class="dev-process">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Our Development Process</h2>
+    <p style="text-align: center; opacity: 0.8; max-width: 600px; margin: 0 auto;">
+      A proven methodology that ensures quality delivery and client satisfaction
+    </p>
+
+    <div class="process-timeline">
+      <div class="process-step">
+        <div class="step-content">
+          <h3>Discovery & Planning</h3>
+          <p>We analyze your requirements, research your market, and create a comprehensive project roadmap with clear milestones and deliverables.</p>
+        </div>
+        <div class="step-number">1</div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-content">
+          <h3>Design & Prototyping</h3>
+          <p>Our design team creates wireframes, mockups, and interactive prototypes to visualize your project before development begins.</p>
+        </div>
+        <div class="step-number">2</div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-content">
+          <h3>Development & Testing</h3>
+          <p>Using modern technologies and best practices, we build your solution with continuous testing and quality assurance throughout.</p>
+        </div>
+        <div class="step-number">3</div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-content">
+          <h3>Launch & Support</h3>
+          <p>We handle deployment, provide training, and offer ongoing support to ensure your project's continued success.</p>
+        </div>
+        <div class="step-number">4</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="case-studies">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Success Stories</h2>
+    <p style="text-align: center; opacity: 0.8; max-width: 600px; margin: 0 auto;">
+      Real results from our professional services engagements
+    </p>
+
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-image">
+          E-commerce Platform<br><small>Fashion Retail Chain</small>
+        </div>
+        <div class="case-content">
+          <h3>Fashion Forward Store</h3>
+          <p>Complete e-commerce overhaul including inventory management, customer portal, and multi-location support.</p>
+          <div class="case-stats">
+            <div class="stat">
+              <div class="stat-number">300%</div>
+              <div class="stat-label">Sales Increase</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">50%</div>
+              <div class="stat-label">Faster Loading</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">95%</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-image">
+          SaaS Platform<br><small>Project Management Tool</small>
+        </div>
+        <div class="case-content">
+          <h3>TaskFlow Management</h3>
+          <p>Custom SaaS platform with team collaboration, real-time updates, and advanced reporting capabilities.</p>
+          <div class="case-stats">
+            <div class="stat">
+              <div class="stat-number">10K+</div>
+              <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">99.9%</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">4.8/5</div>
+              <div class="stat-label">User Rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

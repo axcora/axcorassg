@@ -1,0 +1,7 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="8" fill="#2b2b2b"/>
+  <path d="M16,32 C16,28 20,24 32,28 C44,24 48,28 48,32 C46,36 42,36 32,34 C22,36 18,36 16,32 Z" fill="#f28c28"/>
+  <path d="M16,16 C24,16 24,28 16,28 C24,28 24,44 16,44" stroke="#e0e0e0" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48,16 C40,16 40,28 48,28 C40,28 40,44 48,44" stroke="#e0e0e0" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="32" y="56" fill="#f7df1e" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">JS</text>
+</svg>

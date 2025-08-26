@@ -1,0 +1,32 @@
+<footer class="container bg-primary rounded-lg text-white">
+  <div class="row p-5">
+  <div class="col-md-6 p-3">
+		<h3>
+          {{#if site.logo_image}}
+            <img src="{{ site.logo_image }}" alt="{{ site.title }}" style="height: 1.5rem; width: auto; vertical-align: middle; margin-right: 0.5rem;">
+          {{/if}}
+          ⚡ {{ site.title }}
+        </h3>
+        <p>{{ site.description }}</p>
+        <p>Created by {{ site.author }}</p>
+		</div>
+  <div class="col-md-3 px-6 py-6">
+   <h4>Navigation</h4>
+        <ul class="footer-nav">
+          {{#each site.navbar}}
+          <li><a href="{{ url }}">{{ title }}</a></li>
+          {{/each}}
+        </ul>
+  </div>
+  <div class="col-md- 3 px-6 py-6">
+  <h4>Connect</h4>
+        <div class="footer-social">
+          {{#each site.social}}
+          <a href="{{ url }}" target="_blank" title="{{ name }}">{{ icon }}</a>
+          {{/each}}
+        </div>
+  </div>
+</footer>
+<div class="text-center p-3">
+<p><small>&copy; {{ "now" | formatDate }} {{ site.title }}. Built with ⚡ Axcora</small></p>
+</div>

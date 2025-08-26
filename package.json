@@ -1,0 +1,138 @@
+{
+  "name": "axcora",
+  "version": "1.0.0",
+  "description": "Modern and Super Light Static Site Generator",
+  "bin": {
+    "axcora": "dist/cli/index.js"
+  },
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test-css": "node scripts/test-css-simple.js",
+    "build": "npm run build-axcora-css && npm run build-css-pages && tsx src/cli/index.ts build",
+    "dev": "node dev-server.cjs",
+    "lite": "node dev-lite.cjs",
+    "build-lite": "node ./your-build-script.js",
+    "start": "tsx src/cli/index.ts start",
+    "serve-reload": "browser-sync start --server 'public' --files 'public' --no-ui --reload-delay 200 --reload-debounce 200",
+    "axcora:build": "npm run build-axcora-css && npm run build-css-pages && tsx src/cli/index.ts build",
+    "axcora:dev": "npm run build && npm run compile && node dist/cli/index.js dev",
+    "axcora:start": "npm run compile && npm run build && node dist/cli/index.js start",
+    "axcora:smart": "node scripts/smart-cli.js",
+    "dev:fresh": "npm run compile && npm run dev",
+    "build:fresh": "npm run compile && npm run build",
+    "dev:watch": "npm run framework-dev",
+    "compile": "tsc --build && node scripts/make-executable.js",
+    "link-cli": "npm run compile && npm unlink -g && npm link",
+    "install-global": "npm run compile && npm install -g .",
+    "axcora": "npm run compile && npm install -g .",
+    "test-cli": "node dist/cli/index.js --help",
+    "build-css-pages": "node scripts/build-css-pages.js",
+    "setup": "npm run compile && npm run build-css",
+    "docs": "node scripts/generate-css-docs.js",
+    "build-axcora-css": "node scripts/build-axcora-framework.js",
+    "build-css": "npm run minify-css",
+    "watch-css": "chokidar \"static/css/**/*.css\" -c \"npm run build-axcora-css\"",
+    "minify-css": "node scripts/minify-axcora-css.js",
+    "minify-js": "node scripts/minify-axcora-js.js",
+    "optimize-css": "npm run build-axcora-css && npm run minify-css",
+    "css-stats": "node scripts/css-statistics.js",
+    "css-validate": "stylelint \"static/css/**/*.css\"",
+    "css-fix": "stylelint \"static/css/**/*.css\" --fix",
+    "css-purge": "node scripts/purge-unused-css.js",
+    "framework-build": "npm run build-axcora-css && npm run optimize-css",
+    "framework-dev": "npm run watch-css & npm run dev",
+    "framework-setup": "npm run compile && npm run framework-build",
+    "framework-docs": "npm run framework-build && node scripts/generate-complete-docs.js",
+    "complete-build": "npm run compile && npm run framework-build && npm run build",
+    "complete-dev": "npm run framework-dev",
+    "complete-setup": "npm run framework-setup && npm run setup",
+    "complete-test": "npm run css-validate && npm run test-all && npm run framework-test"
+  },
+  "keywords": [
+    "static-site-generator",
+    "blog",
+    "typescript",
+    "markdown",
+    "css",
+    "framework",
+    "modern",
+    "responsive",
+    "mobile-first",
+    "dark-theme",
+    "glassmorphism",
+    "beautiful",
+    "fast",
+    "accessible",
+    "ssg",
+    "templating",
+    "complete-solution",
+    "axcora-framework"
+  ],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/axcora/axcorassg.git"
+	},
+	"author": {
+		"name": "Axcora Team",
+		"email": "axcora@gmail.com",
+		"url": "https://axcora.com/"
+	},
+	"license": "MIT",
+	"engines": {
+		"node": ">=20"
+	},
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "chalk": "^5.3.0",
+    "chokidar": "^3.6.0",
+    "clean-css": "^5.3.3",
+    "commander": "^12.1.0",
+    "cssnano": "^7.1.0",
+    "express": "^4.21.2",
+    "fs-extra": "^11.3.1",
+    "gray-matter": "^4.0.3",
+    "handlebars": "^4.7.8",
+    "js-yaml": "^4.1.0",
+    "marked": "^12.0.2",
+    "open": "^10.2.0",
+    "postcss": "^8.5.6",
+    "terser": "^5.43.1",
+    "tsx": "^4.19.2",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/clean-css": "^4.2.11",
+    "@types/commander": "^2.12.0",
+    "@types/express": "^5.0.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/js-yaml": "^4.0.9",
+    "@types/marked": "^5.0.2",
+    "@types/node": "^20.11.0",
+    "browser-sync": "^3.0.4",
+    "chokidar-cli": "^3.0.0",
+    "glob": "^11.0.3",
+    "stylelint": "^15.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "uglify-js": "^3.19.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "axcora": {
+    "framework": {
+      "version": "2.0.0",
+      "components": 22,
+      "features": [
+        "Modern 2025 Design",
+        "Dark Theme Built-in",
+        "Mobile-First Responsive",
+        "Glassmorphism Effects",
+        "Performance Optimized",
+        "Accessibility Ready"
+      ]
+    }
+  }
+}

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Products | Axcora - Professional Website Themes</title>
+  <style>
+    /* ===== INHERIT DESIGN SYSTEM FROM MAIN ===== */
+    :root {
+      --primary: #6366f1;
+      --primary-soft: #818cf8;
+      --primary-dark: #4f46e5;
+      --secondary: #10b981;
+      --secondary-dark: #059669;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f1f5f9;
+      --glass: rgba(15, 23, 42, 0.82);
+      --border: rgba(148, 163, 184, 0.2);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
+      --radius-sm: 1.6rem;
+      --radius-md: 2rem;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      background-image:
+        radial-gradient(circle at 15% 25%, rgba(99, 102, 241, 0.04) 0%, transparent 25%),
+        radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.04) 0%, transparent 25%);
+    }
+
+    /* ===== PRODUCTS PAGE SPECIFIC STYLES ===== */
+    .products-hero {
+      padding: 8rem 5% 5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .products-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #fff, var(--light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .products-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.85rem 2rem;
+      background: transparent;
+      border: 2px solid var(--border);
+      border-radius: 2rem;
+      color: var(--light);
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-color: transparent;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    .product-card {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .product-preview {
+      height: 240px;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    .preview-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .product-card:hover .preview-overlay {
+      opacity: 1;
+    }
+
+    .preview-btn {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .product-info {
+      padding: 2rem;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .product-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-category {
+      color: var(--primary-soft);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .product-price {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--secondary);
+      padding: 0.4rem 1rem;
+      border-radius: 1.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .product-features {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .product-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .feature-icon {
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn-buy {
+      flex: 1;
+      padding: 1rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-demo {
+      padding: 1rem 1.5rem;
+      background: transparent;
+      color: var(--primary-soft);
+      border: 2px solid var(--border);
+      border-radius: 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-buy:hover, .btn-demo:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Popular badge */
+    .popular-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      z-index: 10;
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+      
+      .products-nav {
+        gap: 0.75rem;
+      }
+      
+      .filter-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Products Hero -->
+  <section class="products-hero">
+    <h1>Premium Website Themes</h1>
+    <p style="font-size: 1.2rem; opacity: 0.85; max-width: 700px; margin: 0 auto;">
+      Professional, modern, and fully customizable themes designed to elevate your digital presence
+    </p>
+  </section>
+
+  <!-- Filter Navigation -->
+  <div class="products-nav">
+    <button class="filter-btn active" data-filter="all">All Themes</button>
+    <button class="filter-btn" data-filter="business">Business</button>
+    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+    <button class="filter-btn" data-filter="portfolio">Portfolio</button>
+    <button class="filter-btn" data-filter="blog">Blog</button>
+  </div>
+
+  <!-- Products Grid -->
+  <section class="products-grid">
+    <div class="product-card" data-category="business">
+      <div class="popular-badge">🔥 Popular</div>
+      <div class="product-preview">
+        Corporate Business Theme<br><small>Dashboard + Analytics Integration</small>
+        <div class="preview-overlay">
+          <button class="preview-btn">Live Preview</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-header">
+          <div>
+            <h3 class="product-title">BusinessPro Elite</h3>
+            <span class="product-category">Business</span>
+          </div>
+          <div class="product-price">$79</div>
+        </div>
+        <ul class="product-features">
+          <li><span class="feature-icon">✓</span> Complete dashboard system</li>
+          <li><span class="feature-icon">✓</span> Advanced analytics</li>
+          <li><span class="feature-icon">✓</span> CRM integration ready</li>
+          <li><span class="feature-icon">✓</span> 50+ page templates</li>
+        </ul>
+        <div class="product-actions">
+          <button class="btn-buy">Purchase Now</button>
+          <button class="btn-demo">Demo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="ecommerce">
+      <div class="product-preview">
+        Modern E-commerce Store<br><small>Full Shopping Cart + Inventory</small>
+        <div class="preview-overlay">
+          <button class="preview-btn">Live Preview</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-header">
+          <div>
+            <h3 class="product-title">ShopFlow Pro</h3>
+            <span class="product-category">E-commerce</span>
+          </div>
+          <div class="product-price">$89</div>
+        </div>
+        <ul class="product-features">
+          <li><span class="feature-icon">✓</span> Payment gateway integration</li>
+          <li><span class="feature-icon">✓</span> Inventory management</li>
+          <li><span class="feature-icon">✓</span> Order tracking system</li>
+          <li><span class="feature-icon">✓</span> Mobile-first design</li>
+        </ul>
+        <div class="product-actions">
+          <button class="btn-buy">Purchase Now</button>
+          <button class="btn-demo">Demo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="portfolio">
+      <div class="product-preview">
+        Creative Portfolio Theme<br><small>Interactive Project Showcase</small>
+        <div class="preview-overlay">
+          <button class="preview-btn">Live Preview</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-header">
+          <div>
+            <h3 class="product-title">CreativePro Studio</h3>
+            <span class="product-category">Portfolio</span>
+          </div>
+          <div class="product-price">$59</div>
+        </div>
+        <ul class="product-features">
+          <li><span class="feature-icon">✓</span> Interactive galleries</li>
+          <li><span class="feature-icon">✓</span> Video background support</li>
+          <li><span class="feature-icon">✓</span> Contact form integration</li>
+          <li><span class="feature-icon">✓</span> SEO optimized</li>
+        </ul>
+        <div class="product-actions">
+          <button class="btn-buy">Purchase Now</button>
+          <button class="btn-demo">Demo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="blog">
+      <div class="product-preview">
+        Modern Blog Platform<br><small>Multi-author + Comment System</small>
+        <div class="preview-overlay">
+          <button class="preview-btn">Live Preview</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-header">
+          <div>
+            <h3 class="product-title">BlogFlow Premium</h3>
+            <span class="product-category">Blog</span>
+          </div>
+          <div class="product-price">$49</div>
+        </div>
+        <ul class="product-features">
+          <li><span class="feature-icon">✓</span> Multi-author support</li>
+          <li><span class="feature-icon">✓</span> Advanced commenting</li>
+          <li><span class="feature-icon">✓</span> Newsletter integration</li>
+          <li><span class="feature-icon">✓</span> Social media ready</li>
+        </ul>
+        <div class="product-actions">
+          <button class="btn-buy">Purchase Now</button>
+          <button class="btn-demo">Demo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="business">
+      <div class="product-preview">
+        Agency Landing Page<br><small>Lead Generation Focused</small>
+        <div class="preview-overlay">
+          <button class="preview-btn">Live Preview</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-header">
+          <div>
+            <h3 class="product-title">AgencyFlow</h3>
+            <span class="product-category">Business</span>
+          </div>
+          <div class="product-price">$69</div>
+        </div>
+        <ul class="product-features">
+          <li><span class="feature-icon">✓</span> Lead capture forms</li>
+          <li><span class="feature-icon">✓</span> Team showcase</li>
+          <li><span class="feature-icon">✓</span> Service pages</li>
+          <li><span class="feature-icon">✓</span> Testimonial system</li>
+        </ul>
+        <div class="product-actions">
+          <button class="btn-buy">Purchase Now</button>
+          <button class="btn-demo">Demo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-category="ecommerce">
+      <div class="product-preview">
+        Marketplace Platform<br><small>Multi-vendor Ready</small>
+        <div class="preview-overlay">
+          <button class="preview-btn">Live Preview</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-header">
+          <div>
+            <h3 class="product-title">MarketPlace Pro</h3>
+            <span class="product-category">E-commerce</span>
+          </div>
+          <div class="product-price">$129</div>
+        </div>
+        <ul class="product-features">
+          <li><span class="feature-icon">✓</span> Multi-vendor system</li>
+          <li><span class="feature-icon">✓</span> Commission management</li>
+          <li><span class="feature-icon">✓</span> Advanced search</li>
+          <li><span class="feature-icon">✓</span> Review system</li>
+        </ul>
+        <div class="product-actions">
+          <button class="btn-buy">Purchase Now</button>
+          <button class="btn-demo">Demo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Filter functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const productCards = document.querySelectorAll('.product-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Update active button
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.dataset.filter;
+          
+          // Filter products
+          productCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.style.display = 'block';
+              card.style.animation = 'fadeIn 0.5s ease';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

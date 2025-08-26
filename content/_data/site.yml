@@ -1,0 +1,78 @@
+# Site Information
+title: "Axcora Framework"
+description: "Modern static site generator with built-in CSS framework"
+url: "http://localhost:3000"
+author: "Axcora Team"
+image: "/img/axs.jpg"
+logo: "/img/logo.png"
+favicon: "/img/logo.jpg"
+blog:
+  posts_per_page: 6
+  show_excerpts: true
+
+show_blog_list: false
+
+search:
+  enabled: false
+
+# Theme settings
+theme:
+  enable_dark_mode: true
+  default_theme: "light"
+
+# Social Media
+social:
+  twitter: "https://twitter.com/axcora"
+  github: "https://github.com/axcora/axcora"
+  linkedin: "https://linkedin.com/company/axcora"
+  youtube: "https://youtube.com/@axcora"
+
+# Navigation Menu
+navbar:
+  - title: "Home"
+    url: "/"
+  - title: "About"
+    url: "/about/"
+  - title: "Installation" 
+    url: "/install/"
+  - title: "Templating" 
+    url: "/templating/"
+  - title: "Components" 
+    url: "/components/"
+  - title: "CSS" 
+    url: "/examples/"
+#  - title: "Blog" 
+#    url: "/blog/"
+#  - title: "Tags"
+#    url: "/tags/"
+#  - title: "Categories"
+#    url: "/categories/"
+  - title: "Support"
+    url: "/about/"
+
+# Footer Links
+footer:
+  links:
+    - title: "Getting Started"
+      url: "/docs/getting-started/"
+    - title: "Components"
+      url: "/docs/components/"
+    - title: "GitHub"
+      url: "https://github.com/axcora/axcora"
+    - title: "Support"
+      url: "/support/"
+
+# SEO Settings
+seo:
+  keywords: ["static site generator", "css framework", "web development", "responsive design"]
+  google_analytics: "GA_TRACKING_ID"
+  google_search_console: "SEARCH_CONSOLE_ID"
+
+
+# Build Settings
+build:
+  minify_css: true
+  minify_js: true
+  optimize_images: true
+  generate_sitemap: true
+  generate_rss: true

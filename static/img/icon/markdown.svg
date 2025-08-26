@@ -1,0 +1,7 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8 2 H44 L56 14 V62 H8 Z" fill="#fdfdfd"/>
+  <path d="M44 2 L56 14 H44 Z" fill="#fff6e6"/>
+  <path d="M8 2 H44 L56 14 V62 H8 Z" fill="none" stroke="#ccc" stroke-width="2" stroke-linejoin="round"/>
+  <text x="16" y="34" font-family="Menlo, monospace" font-size="20" fill="#999">#</text>
+  <text x="16" y="52" font-family="Menlo, monospace" font-size="14" fill="#f06529">.md</text>
+</svg>

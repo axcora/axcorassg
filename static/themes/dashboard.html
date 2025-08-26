@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Axcora CSS  Documentation - Modern CSS Axcora CSS </title>
+<link rel="stylesheet" href="/css/axcora.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#"><img src="/img/logo.png" style="height:2rem"> Dashboard</a>
+        <button class="navbar-toggler" id="navToggler">&#9776;</button>
+        <div class="navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="#users">Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="#reports">Reports</a></li>
+                <li class="nav-item"><a class="nav-link" href="#settings">Settings</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid mt-4">
+        <section id="overview" class="mb-5">
+            <div class="row">
+                <div class="col-lg-3 col-6 mb-4">
+                    <div class="card text-center bg-gradient-success text-light">
+                        <div class="card-body">
+                            <div class="text-2xl font-bold mb-2">👥</div>
+                            <div class="text-xl font-semibold">2,150</div>
+                            <div class="text-sm text-uppercase">Active Users</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                    <div class="card text-center bg-gradient-primary text-light">
+                        <div class="card-body">
+                            <div class="text-2xl font-bold mb-2">💰</div>
+                            <div class="text-xl font-semibold">$7,600</div>
+                            <div class="text-sm text-uppercase">Revenue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                    <div class="card text-center bg-gradient-warning text-dark">
+                        <div class="card-body">
+                            <div class="text-2xl font-bold mb-2">🛒</div>
+                            <div class="text-xl font-semibold">314</div>
+                            <div class="text-sm text-uppercase">Orders</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6 mb-4">
+                        <div class="card text-center bg-gradient-info text-light">
+                            <div class="card-body">
+                                <div class="text-2xl font-bold mb-2">📩</div>
+                                <div class="text-xl font-semibold">57</div>
+                                <div class="text-sm text-uppercase">New Messages</div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+        <section id="users" class="mb-5">
+            <h2 class="section-title mb-4">Users</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alice Smith</td>
+                            <td>alice@email.com</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>Admin</td>
+                        </tr>
+                        <tr>
+                            <td>Bob Jones</td>
+                            <td>bob@email.com</td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                            <td>User</td>
+                        </tr>
+                        <tr>
+                            <td>Carol Lee</td>
+                            <td>carol@email.com</td>
+                            <td><span class="badge badge-danger">Banned</span></td>
+                            <td>Editor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section id="reports" class="mb-5">
+            <h2 class="section-title mb-4">Reports</h2>
+            <div class="card mb-3">
+                <div class="card-header">Monthly Activity</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <div class="p-2 bg-gradient-success rounded text-light">
+                                <span class="font-semibold">+230</span> new users registered
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <div class="p-2 bg-gradient-warning rounded text-dark">
+                                <span class="font-semibold">+40</span> support tickets resolved
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="settings" class="mb-5">
+            <h2 class="section-title mb-4">Settings & Profile</h2>
+            <div class="row">
+                <div class="col-lg-5 mb-4">
+                    <div class="card shadow-md">
+                        <div class="card-header bg-gradient-primary text-light">Profile</div>
+                        <div class="card-body text-center">
+                            <img src="/img/logo.png" class="img-thumbnail mb-2" style="width:70px;">
+                            <h3 class="font-bold mb-1">Alice Smith</h3>
+                            <div class="text-sm text-muted mb-3">Admin</div>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 mb-4">
+                    <div class="card shadow-md">
+                        <div class="card-header">Account Settings</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" placeholder="New Password">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" placeholder="Confirm Password">
+                                </div>
+                                <button class="btn btn-primary" type="submit">Update Password</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="py-3 text-center bg-dark text-light">
+        &copy; 2025 Dashboard. Built with AxCSS Framework.
+    </footer>
+<script src="/js/axcora.js"></script>
+</body>
+</html>

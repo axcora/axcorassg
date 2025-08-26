@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axcora | Modern Web Solutions & Open Source Technology</title>
+  <style>
+    /* ===== 2025 CORE DESIGN SYSTEM ===== */
+    :root {
+      /* Dynamic color system */
+      --primary: #6366f1;
+      --primary-soft: #818cf8;
+      --secondary: #10b981;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f1f5f9;
+      --glass: rgba(15, 23, 42, 0.75);
+      --border: rgba(148, 163, 184, 0.2);
+      
+      /* Modern metrics */
+      --radius: 2.2rem;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      
+      /* Typography */
+      --font-sans: system-ui, -apple-system, sans-serif;
+      --h1: clamp(2.5rem, 5vw, 4.5rem);
+      --h2: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 20%);
+    }
+
+    /* ===== GLASSMORPHISM LAYOUT ===== */
+    .glass-panel {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    [data-scroll] {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: var(--transition);
+    }
+
+    [data-scroll].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== NAVIGATION ===== */
+    header {
+      position: fixed;
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      padding: 1rem 5%;
+      background: var(--glass);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+    }
+
+    nav a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: var(--transition);
+    }
+
+    nav a:hover:after {
+      width: 100%;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 10% 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 65ch;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: var(--h1);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #fff, var(--light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2.5rem;
+      max-width: 60ch;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 1.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-size: 1.1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--light);
+      border: 2px solid var(--border);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 25px rgba(99, 102, 241, 0.4);
+    }
+
+    /* ===== TECHNOLOGY GRID ===== */
+    .tech-grid {
+      padding: 6rem 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .tech-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .tech-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.1));
+      color: var(--primary);
+    }
+
+    /* ===== SOLUTION CARDS ===== */
+    .solutions {
+      padding: 7rem 5% 5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: var(--h2);
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      padding: 2.5rem;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    /* ===== PREMIUM SECTION ===== */
+    .premium {
+      background: var(--glass);
+      padding: 6rem 5%;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .premium-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact {
+      padding: 7rem 5% 5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 1.1rem 1.5rem;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      color: var(--light);
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 3rem 5% 4rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .sponsor-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      padding: 0.75rem 2rem;
+      border-radius: 2rem;
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+
+    .sponsor-btn:hover {
+      background: linear-gradient(135deg, #334155, #1e293b);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER & HERO ===== -->
+  <header id="header">
+    <a href="#" class="logo">Axcora</a>
+    <nav>
+      <ul>
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#premium">Premium</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content" data-scroll>
+      <h1>Build Digital Excellence with Modern Web Technology</h1>
+      <p>Axcora delivers cutting-edge open source solutions and premium services to power your next-generation digital experiences. We engineer the future of web technology today.</p>
+      <div class="cta-group">
+        <a href="#solutions" class="btn btn-primary">Explore Solutions</a>
+        <a href="https://github.com/axcora" class="btn btn-secondary">GitHub Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WEB TECHNOLOGIES ===== -->
+  <section id="technologies" style="padding: 5rem 0; background: rgba(15, 23, 42, 0.7);">
+    <div class="tech-grid">
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">🪄</div>
+        <h3>Static Site Generator</h3>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">🎨</div>
+        <h3>Modern CSS Framework</h3>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">🗃️</div>
+        <h3>Headless CMS</h3>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">📱</div>
+        <h3>POS Applications</h3>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">🚀</div>
+        <h3>Web Performance</h3>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">🔗</div>
+        <h3>API Integrations</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OPEN SOURCE SOLUTIONS ===== -->
+  <section id="solutions" class="solutions">
+    <h2 class="section-title" data-scroll>Open Source Solutions</h2>
+    
+    <div class="cards">
+      <article class="card glass-panel" data-scroll>
+        <div class="card-header">
+          <div class="card-icon">📦</div>
+          <h3>Modern CMS Platforms</h3>
+        </div>
+        <p>Lightweight, modular content management systems built for speed and flexibility:</p>
+        <ul style="margin-top: 1.25rem; padding-left: 1.5rem;">
+          <li style="margin-bottom: 0.75rem;">Axcora Core CMS (Headless)</li>
+          <li style="margin-bottom: 0.75rem;">PageFlow Content Engine</li>
+          <li>Arc Block Editor Framework</li>
+        </ul>
+      </article>
+
+      <article class="card glass-panel" data-scroll>
+        <div class="card-header">
+          <div class="card-icon">⚡</div>
+          <h3>Static Site Generator</h3>
+        </div>
+        <p>Blazing-fast site generator with modern development experience:</p>
+        <ul style="margin-top: 1.25rem; padding-left: 1.5rem;">
+          <li style="margin-bottom: 0.75rem;">Zero-config deployment</li>
+          <li style="margin-bottom: 0.75rem;">Incremental static regeneration</li>
+          <li>Native TypeScript support</li>
+        </ul>
+      </article>
+
+      <article class="card glass-panel" data-scroll>
+        <div class="card-header">
+          <div class="card-icon">🛍️</div>
+          <h3>Free Application Suite</h3>
+        </div>
+        <p>Complete open source business solutions:</p>
+        <ul style="margin-top: 1.25rem; padding-left: 1.5rem;">
+          <li style="margin-bottom: 0.75rem;">Axcora POS (Point of Sale)</li>
+          <li style="margin-bottom: 0.75rem;">Inventory Management System</li>
+          <li>Open Source Theme Library</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== PREMIUM SERVICES ===== -->
+  <section id="premium" class="premium">
+    <h2 class="section-title" style="color: white;" data-scroll>Premium Products & Services</h2>
+    
+    <div class="premium-grid">
+      <div class="glass-panel card" data-scroll>
+        <h3 style="margin: 1.5rem 0; font-size: 1.5rem;">Premium Website Themes</h3>
+        <p>Designer-crafted themes with advanced functionality and seamless integration capabilities. All themes include:</p>
+        <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+          <li>100+ component variations</li>
+          <li>Dark/light mode support</li>
+          <li>Full accessibility compliance</li>
+          <li>6-month updates</li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Browse Themes</a>
+      </div>
+
+      <div class="glass-panel card" data-scroll>
+        <h3 style="margin: 1.5rem 0; font-size: 1.5rem;">Custom Development</h3>
+        <p>End-to-end development services for complex web applications:</p>
+        <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+          <li>Enterprise CMS implementation</li>
+          <li>PWA & mobile app development</li>
+          <li>Performance optimization</li>
+          <li>Security hardening</li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;">Request Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO & SUPPORT ===== -->
+  <section id="portfolio" class="solutions" style="padding-top: 3rem;">
+    <h2 class="section-title" data-scroll>Open Source Contributions</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; opacity: 0.8;">
+      We proudly maintain several active open source projects. Contribute, sponsor, or use our tools for free.
+    </p>
+
+    <div class="sponsor-btn" data-scroll>
+      <span>❤️</span> Support Our Work on GitHub
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact">
+    <h2 class="section-title" data-scroll>Get In Touch</h2>
+    <p style="text-align: center; margin-bottom: 2.5rem; opacity: 0.8;">
+      Have a project in mind? We'd love to hear from you.
+    </p>
+    
+    <form id="contactForm" data-scroll>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>Made with ❤️ by the Axcora Open Source Team</p>
+    <a href="https://github.com/axcora" class="sponsor-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+      Sponsor on GitHub
+    </a>
+  </footer>
+
+  <script>
+    // ===== MODERN 2025 INTERACTIONS =====
+    document.addEventListener('DOMContentLoaded', () => {
+      // Header scroll effect
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      // Scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('[data-scroll]').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Contact form handling
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Simple validation
+        const name = form.querySelector('input[type="text"]').value;
+        const email = form.querySelector('input[type="email"]').value;
+        const message = form.querySelector('textarea').value;
+        
+        if (name && email && message) {
+          // In production: would connect to email service
+          alert('Thank you! Your message has been sent. We\'ll respond within 24 hours.');
+          form.reset();
+        }
+      });
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

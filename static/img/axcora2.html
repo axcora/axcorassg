@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axcora | Premium Web Solutions & Open Source Technology</title>
+  <style>
+    /* ===== UPDATED 2025 DESIGN SYSTEM ===== */
+    :root {
+      /* Enhanced dynamic color system */
+      --primary: #6366f1;
+      --primary-soft: #818cf8;
+      --primary-dark: #4f46e5;
+      --secondary: #10b981;
+      --secondary-dark: #059669;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f1f5f9;
+      --glass: rgba(15, 23, 42, 0.82);
+      --border: rgba(148, 163, 184, 0.2);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
+      
+      /* Refined metrics */
+      --radius-xs: 1rem;
+      --radius-sm: 1.6rem;
+      --radius-md: 2rem;
+      --radius-lg: 2.8rem;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      
+      /* Typography */
+      --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --h1: clamp(2.5rem, 5vw, 4.5rem);
+      --h2: clamp(2rem, 4vw, 3.5rem);
+      --h3: clamp(1.5rem, 3vw, 2.25rem);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 20%);
+    }
+
+    /* ===== ADVANCED GLASSMORPHISM ===== */
+    .glass-panel {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ===== SCROLL REVEAL ANIMATIONS ===== */
+    [data-scroll] {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    [data-scroll].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== MOBILE-FIRST NAVIGATION ===== */
+    header {
+      position: fixed;
+      width: 100%;
+      padding: 1.25rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      font-size: 1.8rem;
+    }
+
+    /* Hamburger menu for mobile */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background: var(--light);
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+
+    nav {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2.25rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.75rem 0;
+      font-size: 1.05rem;
+      transition: var(--transition);
+    }
+
+    nav a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2.5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    nav a:hover:after {
+      width: 100%;
+    }
+
+    /* Mobile menu state */
+    #mobile-menu:checked ~ .menu-toggle .bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    #mobile-menu:checked ~ .menu-toggle .bar:nth-child(2) {
+      opacity: 0;
+    }
+    
+    #mobile-menu:checked ~ .menu-toggle .bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    #mobile-menu:checked ~ nav ul {
+      transform: translateX(0);
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Mobile navigation */
+    nav ul {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100vh;
+      width: 75%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      background: var(--glass);
+      transition: all 0.4s ease;
+      visibility: hidden;
+      opacity: 0;
+      z-index: 999;
+      padding: 5rem 2rem 2rem;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 5% 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 65ch;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: var(--h1);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #fff, var(--light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2.5rem;
+      max-width: 60ch;
+    }
+
+    .gradient-tag {
+      display: inline-block;
+      background: linear-gradient(90deg, rgba(99, 102, 241, 0.2), rgba(16, 185, 129, 0.2));
+      color: var(--primary-soft);
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1.1rem 2.2rem;
+      border-radius: 1.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--light);
+      border: 2px solid var(--border);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.45);
+    }
+
+    /* ===== TECHNOLOGY GRID ===== */
+    .tech-grid {
+      padding: 5rem 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2.25rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.25rem;
+      text-align: center;
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .tech-item:hover {
+      transform: translateY(-10px);
+      background: rgba(30, 41, 59, 0.5);
+      border-radius: var(--radius-sm);
+    }
+
+    .tech-icon {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 2.25rem;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(16, 185, 129, 0.12));
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    /* ===== SOLUTION CARDS ===== */
+    .solutions {
+      padding: 6rem 5% 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: var(--h2);
+      margin-bottom: 3.5rem;
+      position: relative;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.25rem;
+    }
+
+    .card {
+      padding: 2.25rem;
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      --glass: rgba(18, 21, 38, 0.85);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 1.4rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: white;
+    }
+
+    /* ===== PREMIUM THEMES SHOWCASE ===== */
+    .themes-showcase {
+      padding: 6rem 5% 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .theme-card {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .theme-img {
+      height: 220px;
+      width: 100%;
+      background: linear-gradient(45deg, #1e293b, #334155);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .theme-info {
+      padding: 1.5rem;
+    }
+
+    .theme-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .theme-price {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--secondary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 1rem;
+      font-weight: 600;
+    }
+
+    /* ===== PORTFOLIO SHOWCASE ===== */
+    .portfolio {
+      padding: 6rem 5% 4rem;
+      background: rgba(10, 15, 30, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .portfolio-item {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--card-shadow);
+    }
+
+    .portfolio-img {
+      height: 240px;
+      width: 100%;
+      background: linear-gradient(45deg, #1e293b, #334155);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      padding: 7rem 5% 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonial {
+      padding: 2rem;
+      position: relative;
+    }
+
+    .testimonial:before {
+      content: """;
+      position: absolute;
+      top: -20px;
+      left: 10px;
+      font-size: 8rem;
+      color: rgba(99, 102, 241, 0.1);
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-content {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+    }
+
+    /* ===== SUPPORT SECTION ===== */
+    .support {
+      padding: 6rem 5% 4rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .support-card {
+      padding: 3.5rem 2.5rem;
+    }
+
+    .support-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .sponsor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .sponsor-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.8rem 1.5rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      text-decoration: none;
+      color: var(--light);
+      border: 2px solid transparent;
+    }
+
+    .sponsor-btn:hover {
+      transform: translateY(-5px);
+      border-color: var(--border);
+      background: rgba(30, 41, 59, 0.5);
+    }
+
+    .sponsor-icon {
+      font-size: 2.5rem;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact {
+      padding: 7rem 5% 5rem;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--light);
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 3.5rem 5% 2.5rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    .footer-col h4:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--light);
+      transform: translateX(5px);
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --radius-md: 1.6rem;
+      }
+      
+      .menu-toggle {
+        display: flex;
+        z-index: 1001;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .hero {
+        text-align: center;
+        padding: 7rem 5% 3rem;
+      }
+      
+      .hero-content {
+        margin: 0 auto;
+      }
+      
+      .cta-group {
+        justify-content: center;
+      }
+      
+      .gradient-tag {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .tech-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .themes-showcase,
+      .portfolio,
+      .testimonials {
+        padding: 5rem 5% 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --h1: 2.5rem;
+        --h2: 1.8rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+      
+      nav ul {
+        width: 100%;
+      }
+      
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <header class="glass-nav">
+    <a href="#" class="logo">
+      <span class="logo-icon">✦</span>
+      Axcora
+    </a>
+    
+    
+    <nav>
+      <ul>
+        <li><a href="#solutions">Open Source</a></li>
+        <li><a href="#themes">Premium Themes</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://github.com/axcora" class="btn btn-primary" style="padding: 0.85rem 1.75rem; margin-left: 10px;">GitHub</a></li>
+      </ul>
+    </nav>
+	  <input type="checkbox" id="mobile-menu" hidden>
+    <label for="mobile-menu" class="menu-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </label>
+  </header>
+
+  <!-- ===== IMPROVED HERO SECTION ===== -->
+  <section class="hero">
+    <div class="hero-content" data-scroll>
+      <span class="gradient-tag">Technology Partner Since 2025</span>
+      <h1>Engineer Digital Excellence with Modern Web Technology</h1>
+      <p>Axcora delivers cutting-edge open source solutions and premium services to power your next-generation digital experiences. We combine innovation with reliability to build technology that works for you.</p>
+      <div class="cta-group">
+        <a href="#solutions" class="btn btn-primary">Explore Open Source</a>
+        <a href="#themes" class="btn btn-secondary">View Premium Themes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ENHANCED TECHNOLOGY SHOWCASE ===== -->
+  <section id="technologies" style="padding: 4rem 0;">
+    <div class="tech-grid">
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">⚡</div>
+        <h3>Static Site Generator</h3>
+        <p>Blazing fast content delivery</p>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">🎨</div>
+        <h3>Modern CSS Framework</h3>
+        <p>Custom component library</p>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">🗃️</div>
+        <h3>Headless CMS</h3>
+        <p>API-first content management</p>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">📱</div>
+        <h3>POS Applications</h3>
+        <p>Modern retail solutions</p>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">🚀</div>
+        <h3>Web Performance</h3>
+        <p>Optimized for speed</p>
+      </div>
+      <div class="tech-item" data-scroll>
+        <div class="tech-icon">🔗</div>
+        <h3>API Integrations</h3>
+        <p>Seamless connectivity</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPANDED OPEN SOURCE SOLUTIONS ===== -->
+  <section id="solutions" class="solutions">
+    <h2 class="section-title" data-scroll>Powerful Open Source Solutions</h2>
+    
+    <div class="cards">
+      <article class="card glass-panel" data-scroll>
+        <div class="card-header">
+          <div class="card-icon">📦</div>
+          <h3>Modern CMS Platforms</h3>
+        </div>
+        <p>Lightweight, modular content management systems built for speed and flexibility:</p>
+        <ul style="margin-top: 1.25rem; padding-left: 1.5rem;">
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><span style="color: var(--secondary);">✓</span> Axcora Core CMS (Headless)</li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><span style="color: var(--secondary);">✓</span> PageFlow Content Engine</li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;"><span style="color: var(--secondary);">✓</span> Arc Block Editor Framework</li>
+        </ul>
+        <a href="#" style="display: inline-block; margin-top: 1.5rem; color: var(--primary-soft); text-decoration: none; font-weight: 500;">Explore CMS Solutions →</a>
+      </article>
+
+      <article class="card glass-panel" data-scroll>
+        <div class="card-header">
+          <div class="card-icon">⚡</div>
+          <h3>Static Site Generator</h3>
+        </div>
+        <p>Blazing-fast site generator with modern development experience:</p>
+        <ul style="margin-top: 1.25rem; padding-left: 1.5rem;">
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><span style="color: var(--secondary);">✓</span> Zero-config deployment</li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><span style="color: var(--secondary);">✓</span> Incremental static regeneration</li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;"><span style="color: var(--secondary);">✓</span> Native TypeScript support</li>
+        </ul>
+        <a href="#" style="display: inline-block; margin-top: 1.5rem; color: var(--primary-soft); text-decoration: none; font-weight: 500;">Documentation →</a>
+      </article>
+
+      <article class="card glass-panel" data-scroll>
+        <div class="card-header">
+          <div class="card-icon">🛍️</div>
+          <h3>Free Application Suite</h3>
+        </div>
+        <p>Complete open source business solutions:</p>
+        <ul style="margin-top: 1.25rem; padding-left: 1.5rem;">
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><span style="color: var(--secondary);">✓</span> Axcora POS (Point of Sale)</li>
+          <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.75rem;"><span style="color: var(--secondary);">✓</span> Inventory Management System</li>
+          <li style="display: flex; align-items: flex-start; gap: 0.75rem;"><span style="color: var(--secondary);">✓</span> Open Source Theme Library</li>
+        </ul>
+        <a href="#" style="display: inline-block; margin-top: 1.5rem; color: var(--primary-soft); text-decoration: none; font-weight: 500;">View All Projects →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== PREMIUM WEBSITE THEMES SHOWCASE ===== -->
+  <section id="themes" class="themes-showcase">
+    <h2 class="section-title" data-scroll>Premium Website Themes</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; opacity: 0.85;">
+      Professionally designed themes with advanced functionality and seamless integration for your business needs
+    </p>
+    
+    <div class="themes-grid">
+      <div class="theme-card glass-panel" data-scroll>
+        <div class="theme-img">
+          Modern Business Theme<br>
+          <small>Dashboard & Analytics Integration</small>
+        </div>
+        <div class="theme-info">
+          <div class="theme-title">
+            <span>BusinessPro</span>
+            <span class="theme-price">$59</span>
+          </div>
+          <p>Complete business solution with dashboard integration and analytics system</p>
+        </div>
+      </div>
+      
+      <div class="theme-card glass-panel" data-scroll>
+        <div class="theme-img">
+          E-commerce Theme<br>
+          <small>Shop & Product Management</small>
+        </div>
+        <div class="theme-info">
+          <div class="theme-title">
+            <span>ShopFlow</span>
+            <span class="theme-price">$69</span>
+          </div>
+          <p>Modern e-commerce solution with inventory management</p>
+        </div>
+      </div>
+      
+      <div class="theme-card glass-panel" data-scroll>
+        <div class="theme-img">
+          Portfolio Theme<br>
+          <small>Project Showcase System</small>
+        </div>
+        <div class="theme-info">
+          <div class="theme-title">
+            <span>CreativePro</span>
+            <span class="theme-price">$49</span>
+          </div>
+          <p>Portfolio-focused theme with interactive project showcase</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OPEN SOURCE PORTFOLIO ===== -->
+  <section id="portfolio" class="portfolio">
+    <h2 class="section-title" data-scroll>Open Source Contributions</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; opacity: 0.85;">
+      Explore our featured open source projects that power thousands of websites worldwide
+    </p>
+    
+    <div class="portfolio-grid">
+      <div class="portfolio-item" data-scroll>
+        <div class="portfolio-img">
+          Axcora CMS<br>
+          <small>Headless content management system</small>
+        </div>
+        <div class="portfolio-overlay">
+          <h3>Axcora CMS</h3>
+          <p>Modern headless CMS with real-time collaboration and workflow management.</p>
+          <a href="#" class="btn btn-primary" style="margin-top: 1rem;">View Project</a>
+        </div>
+      </div>
+      
+      <div class="portfolio-item" data-scroll>
+        <div class="portfolio-img">
+          StoreFlow POS<br>
+          <small>Point of Sale Application</small>
+        </div>
+        <div class="portfolio-overlay">
+          <h3>StoreFlow POS</h3>
+          <p>Open source retail solution for stores and restaurants with inventory management.</p>
+          <a href="#" class="btn btn-primary" style="margin-top: 1rem;">View Project</a>
+        </div>
+      </div>
+      
+      <div class="portfolio-item" data-scroll>
+        <div class="portfolio-img">
+          Arc Design System<br>
+          <small>CSS Component Framework</small>
+        </div>
+        <div class="portfolio-overlay">
+          <h3>Arc Design System</h3>
+          <p>Modern UI component library with dark mode and accessibility features.</p>
+          <a href="#" class="btn btn-primary" style="margin-top: 1rem;">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS SECTION ===== -->
+  <section id="testimonials" class="testimonials">
+    <h2 class="section-title" data-scroll>What Our Community Says</h2>
+    
+    <div class="testimonial-grid">
+      <div class="testimonial glass-panel" data-scroll>
+        <div class="testimonial-content">
+          "Axcora's Static Site Generator reduced our build times by 70% while improving SEO performance. The open source community support is exceptional."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">JD</div>
+          <div>
+            <h4>John Doe</h4>
+            <p style="opacity: 0.8; font-size: 0.95rem;">CTO at TechInnovate</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial glass-panel" data-scroll>
+        <div class="testimonial-content">
+          "We migrated our entire POS system to StoreFlow and saw immediate improvements in speed and reliability. The premium support made implementation seamless."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">SR</div>
+          <div>
+            <h4>Sarah Rodriguez</h4>
+            <p style="opacity: 0.8; font-size: 0.95rem;">CEO at CafeLumina</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial glass-panel" data-scroll>
+        <div class="testimonial-content">
+          "The CMS framework allowed our team to launch 5 new websites in under 2 weeks. The documentation is superb and the performance is outstanding."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">MK</div>
+          <div>
+            <h4>Michael Kim</h4>
+            <p style="opacity: 0.8; font-size: 0.95rem;">Lead Developer at WebSolutions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUPPORT & GITHUB SECTION ===== -->
+  <section id="support" class="support">
+    <div class="support-card glass-panel" data-scroll>
+      <div class="support-icon">❤️</div>
+      <h2 class="section-title" style="max-width: 100%;">Support Our Open Source Mission</h2>
+      <p style="max-width: 600px; margin: 0 auto; opacity: 0.85;">
+        Axcora is committed to building high-quality open source tools. Your support helps us maintain and improve these projects for the community.
+      </p>
+      
+      <div class="sponsor-grid">
+        <a href="https://github.com/sponsors/axcora" class="sponsor-btn glass-panel">
+          <div class="sponsor-icon">💜</div>
+          <div>
+            <h3>GitHub Sponsors</h3>
+            <p>One-time or recurring support</p>
+          </div>
+        </a>
+        
+        <a href="https://opencollective.com/axcora" class="sponsor-btn glass-panel">
+          <div class="sponsor-icon">✨</div>
+          <div>
+            <h3>Open Collective</h3>
+            <p>Support via collective funding</p>
+          </div>
+        </a>
+        
+        <a href="#contact" class="sponsor-btn glass-panel">
+          <div class="sponsor-icon">🤝</div>
+          <div>
+            <h3>Partnership</h3>
+            <p>Enterprise collaboration</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT FORM ===== -->
+  <section id="contact" class="contact">
+    <h2 class="section-title" data-scroll>Get In Touch</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 2.5rem; opacity: 0.85;">
+      Have a project in mind? We'd love to hear from you. Send us a message and we'll respond within 24 hours.
+    </p>
+    
+    <form id="contactForm" data-scroll>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <select class="form-control" style="appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"%2394a3b8\" viewBox=\"0 0 16 16\"><path d=\"M8 11L3 6h10l-5 5z\"/></svg>'); background-repeat: no-repeat; background-position: right 1rem center;">
+          <option value="" disabled selected>What are you interested in?</option>
+          <option>Open Source Project</option>
+          <option>Premium Theme</option>
+          <option>Custom Development</option>
+          <option>Partnership</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Axcora</h4>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Open Source</a></li>
+          <li><a href="#">Premium Themes</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul class="footer-links">
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">License</a></li>
+          <li><a href="#">Contributing</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <p style="opacity: 0.7; margin-bottom: 1.5rem;">© 2025 Axcora. All rights reserved. Proudly open source.</p>
+    
+    <a href="https://github.com/axcora" class="sponsor-btn" style="display: inline-flex; width: auto; margin: 0 auto;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+      Support on GitHub
+    </a>
+  </footer>
+
+  <script>
+    // ===== ADVANCED 2025 INTERACTIONS =====
+    document.addEventListener('DOMContentLoaded', () => {
+      // Header scroll effect
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('glass-nav', window.scrollY > 50);
+      });
+
+      // Scroll animations with stagger effect
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, index * 150);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '-50px' });
+
+      document.querySelectorAll('[data-scroll]').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Mobile menu handling
+      const mobileMenu = document.getElementById('mobile-menu');
+      const body = document.body;
+      
+      mobileMenu.addEventListener('change', () => {
+        if (mobileMenu.checked) {
+          body.style.overflow = 'hidden';
+        } else {
+          body.style.overflow = '';
+        }
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.checked = false;
+          body.style.overflow = '';
+        });
+      });
+
+      // Contact form handling
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Validation
+        const name = form.querySelector('input[type="text"]').value;
+        const email = form.querySelector('input[type="email"]').value;
+        const message = form.querySelector('textarea').value;
+        
+        if (name && email && message) {
+          // Show success state
+          const originalText = form.querySelector('button').textContent;
+          form.querySelector('button').textContent = 'Sending...';
+          
+          setTimeout(() => {
+            form.querySelector('button').textContent = 'Message Sent!';
+            form.reset();
+            
+            setTimeout(() => {
+              form.querySelector('button').textContent = originalText;
+            }, 2000);
+          }, 1000);
+        }
+      });
+
+      // Smooth scrolling with offset
+      document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerOffset = 80;
+            const elementPosition = targetElement.offsetTop;
+            const offsetPosition = elementPosition - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            mobileMenu.checked = false;
+            body.style.overflow = '';
+          }
+        });
+      });
+
+      // Dynamic form select styling
+      const selects = document.querySelectorAll('select');
+      selects.forEach(select => {
+        select.addEventListener('change', () => {
+          if (select.selectedIndex > 0) {
+            select.style.color = '#f1f5f9';
+          } else {
+            select.style.color = '#94a3b8';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

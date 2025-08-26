@@ -1,0 +1,341 @@
+#!/usr/bin/env node
+
+import { Command } from 'commander';
+import chalk from 'chalk';
+import path from 'path';
+import fs from 'fs/promises';
+import { build } from '../core/builder.js';
+import { startDevServer } from '../server/dev-server.js';
+import { startProductionServer } from '../server/prod-server.js';
+
+const program = new Command();
+
+// Package info
+const packageJson = JSON.parse(
+  await fs.readFile(path.join(process.cwd(), 'package.json'), 'utf-8')
+);
+
+program
+  .name('Axcora')
+  .description('⚡ Modern Static Site Generator with TypeScript')
+  .version(packageJson.version || '1.0.0');
+
+// Create new project
+program
+  .command('create')
+  .description('🚀 Create a new Axcora project')
+  .argument('<project-name>', 'name of the project')
+  .option('-t, --template <template>', 'project template', 'default')
+  .action(async (projectName, options) => {
+    console.log(chalk.cyan('🚀 Creating new Axcora project...'));
+    await createProject(projectName, options.template);
+  });
+
+// Development server
+program
+  .command('dev')
+  .description('🔥 Start development server with hot reload')
+  .option('-p, --port <port>', 'port number', '3000')
+  .option('--host <host>', 'host address', 'localhost')
+  .action(async (options) => {
+    console.log(chalk.cyan('🔥 Starting development server...'));
+    await startDevServer(parseInt(options.port), options.host);
+  });
+
+// Build for production
+program
+  .command('build')
+  .description('📦 Build site for production')
+  .option('--analyze', 'analyze bundle size')
+  .option('--verbose', 'verbose output')
+  .action(async (options) => {
+    console.log(chalk.cyan('📦 Building for production...'));
+    const startTime = Date.now();
+    
+    try {
+      await build({ isDev: false });
+      const buildTime = Date.now() - startTime;
+      console.log(chalk.green(`✅ Build completed in ${buildTime}ms`));
+      
+      if (options.analyze) {
+        await analyzeBuild();
+      }
+    } catch (error) {
+      console.error(chalk.red('❌ Build failed:'), error);
+      process.exit(1);
+    }
+  });
+
+// Start production server
+program
+  .command('start')
+  .description('🚀 Start production server')
+  .option('-p, --port <port>', 'port number', '8000')
+  .option('--host <host>', 'host address', '0.0.0.0')
+  .action(async (options) => {
+    console.log(chalk.cyan('🚀 Starting production server...'));
+    await startProductionServer(parseInt(options.port), options.host);
+  });
+
+// Clean output
+program
+  .command('clean')
+  .description('🧹 Clean build output')
+  .action(async () => {
+    console.log(chalk.cyan('🧹 Cleaning output...'));
+    await cleanOutput();
+  });
+
+// Preview build
+program
+  .command('preview')
+  .description('👀 Preview production build locally')
+  .option('-p, --port <port>', 'port number', '4173')
+  .action(async (options) => {
+    console.log(chalk.cyan('👀 Starting preview server...'));
+    await previewBuild(parseInt(options.port));
+  });
+
+// Initialize existing project
+program
+  .command('init')
+  .description('⚡ Initialize Axcora in existing directory')
+  .option('-f, --force', 'overwrite existing files')
+  .action(async (options) => {
+    console.log(chalk.cyan('⚡ Initializing Axcora project...'));
+    await initProject(options.force);
+  });
+
+// Show info
+program
+  .command('info')
+  .description('ℹ️  Show environment info')
+  .action(() => {
+    showInfo();
+  });
+
+// Parse arguments
+program.parse();
+
+// Implementation functions
+async function createProject(projectName: string, template: string) {
+  const projectPath = path.join(process.cwd(), projectName);
+  
+  try {
+    // Check if directory exists
+    try {
+      await fs.access(projectPath);
+      console.error(chalk.red(`❌ Directory "${projectName}" already exists`));
+      return;
+    } catch {
+      // Directory doesn't exist, good to continue
+    }
+    
+    // Create project directory
+    await fs.mkdir(projectPath, { recursive: true });
+    
+    console.log(chalk.blue(`📁 Creating project structure...`));
+    
+    // Create basic structure
+    await createProjectStructure(projectPath, template);
+    
+    console.log(chalk.green(`✅ Created ${projectName} successfully!`));
+    console.log(chalk.cyan('\n📋 Next steps:'));
+    console.log(chalk.white(`  cd ${projectName}`));
+    console.log(chalk.white(`  npm install`));
+    console.log(chalk.white(`  axcora dev`));
+    
+  } catch (error) {
+    console.error(chalk.red('❌ Failed to create project:'), error);
+  }
+}
+
+async function createProjectStructure(projectPath: string, template: string) {
+  // Create directories
+  const dirs = [
+    'content/blog',
+    'content/pages', 
+    'src/templates/layouts',
+    'src/templates/includes',
+    'src/components',
+    'static/img',
+    'static/css',
+    'static/js'
+  ];
+  
+  for (const dir of dirs) {
+    await fs.mkdir(path.join(projectPath, dir), { recursive: true });
+  }
+  
+  // Create package.json
+  const packageJson = {
+    name: path.basename(projectPath),
+    version: '1.0.0',
+    description: 'Generated by Axcora SSG',
+    type: 'module',
+    scripts: {
+      dev: 'axcora dev',
+      build: 'axcora build',
+      start: 'axcora start',
+      preview: 'axcora preview'
+    },
+    dependencies: {
+      axcora: '^1.0.0'
+    }
+  };
+  
+  await fs.writeFile(
+    path.join(projectPath, 'package.json'),
+    JSON.stringify(packageJson, null, 2)
+  );
+  
+  // Create config file
+  const config = `export default {
+  site: {
+    title: "My Axcora Site",
+    description: "Built with Axcora SSG",
+    url: "https://example.com",
+    author: "Your Name"
+  },
+  build: {
+    outDir: "public"
+  }
+};`;
+  
+  await fs.writeFile(path.join(projectPath, 'axcora.config.js'), config);
+  
+  // Create sample content
+  await createSampleContent(projectPath);
+  
+  console.log(chalk.green('📄 Created basic project files'));
+}
+
+async function createSampleContent(projectPath: string) {
+  // Sample blog post
+  const samplePost = `---
+title: "Welcome to Axcora"
+date: 2025-01-15
+category: tutorial
+tags: [axcora, ssg, getting-started]
+---
+
+# Welcome to Axcora!
+
+This is your first blog post created with Axcora Static Site Generator.
+
+## Features
+
+- ⚡ Fast build times
+- 📦 Component-based architecture  
+- 🎨 Flexible templating
+- 🔥 Hot reload development server
+
+Start writing your content and building amazing websites!`;
+
+  await fs.writeFile(
+    path.join(projectPath, 'content/blog/welcome.md'),
+    samplePost
+  );
+
+  // Sample page
+  const samplePage = `---
+title: "About"
+layout: page
+---
+
+# About This Site
+
+This site is built with Axcora, a modern static site generator.`;
+
+  await fs.writeFile(
+    path.join(projectPath, 'content/pages/about.md'),
+    samplePage
+  );
+  
+  console.log(chalk.green('📝 Created sample content'));
+}
+
+async function initProject(force: boolean) {
+  // Similar to createProject but in current directory
+  console.log(chalk.blue('⚡ Initializing Axcora in current directory...'));
+  // Implementation here
+}
+
+async function cleanOutput() {
+  const outputDir = path.join(process.cwd(), 'public');
+  
+  try {
+    await fs.rm(outputDir, { recursive: true, force: true });
+    console.log(chalk.green('✅ Output cleaned'));
+  } catch (error) {
+    console.error(chalk.red('❌ Clean failed:'), error);
+  }
+}
+
+async function analyzeBuild() {
+  console.log(chalk.cyan('📊 Analyzing build...'));
+  
+  const publicDir = path.join(process.cwd(), 'public');
+  const stats = await getBuildStats(publicDir);
+  
+  console.log(chalk.blue('\n📊 Build Analysis:'));
+  console.log(chalk.white(`  📄 HTML files: ${stats.htmlFiles}`));
+  console.log(chalk.white(`  🖼️  Images: ${stats.images}`));
+  console.log(chalk.white(`  📱 CSS files: ${stats.cssFiles}`));
+  console.log(chalk.white(`  📜 JS files: ${stats.jsFiles}`));
+  console.log(chalk.white(`  📦 Total size: ${formatBytes(stats.totalSize)}`));
+}
+
+async function getBuildStats(dir: string) {
+  let htmlFiles = 0, images = 0, cssFiles = 0, jsFiles = 0, totalSize = 0;
+  
+  async function walk(currentDir: string) {
+    const files = await fs.readdir(currentDir, { withFileTypes: true });
+    
+    for (const file of files) {
+      const filePath = path.join(currentDir, file.name);
+      
+      if (file.isDirectory()) {
+        await walk(filePath);
+      } else {
+        const stat = await fs.stat(filePath);
+        totalSize += stat.size;
+        
+        const ext = path.extname(file.name);
+        if (ext === '.html') htmlFiles++;
+        else if (['.jpg', '.jpeg', '.png', '.gif', '.svg'].includes(ext)) images++;
+        else if (ext === '.css') cssFiles++;
+        else if (ext === '.js') jsFiles++;
+      }
+    }
+  }
+  
+  try {
+    await walk(dir);
+  } catch (error) {
+    // Directory might not exist
+  }
+  
+  return { htmlFiles, images, cssFiles, jsFiles, totalSize };
+}
+
+async function previewBuild(port: number) {
+  await startProductionServer(port, 'localhost');
+}
+
+function showInfo() {
+  console.log(chalk.cyan('ℹ️  Axcora Environment Info:'));
+  console.log(chalk.white(`  Node.js: ${process.version}`));
+  console.log(chalk.white(`  Platform: ${process.platform}`));
+  console.log(chalk.white(`  Arch: ${process.arch}`));
+  console.log(chalk.white(`  Axcora: ${packageJson.version}`));
+  console.log(chalk.white(`  Working Directory: ${process.cwd()}`));
+}
+
+function formatBytes(bytes: number): string {
+  if (bytes === 0) return '0 B';
+  const k = 1024;
+  const sizes = ['B', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}

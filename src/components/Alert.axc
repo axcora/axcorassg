@@ -1,0 +1,6 @@
+<div class="alert alert-{{ type or "info" }} {{ class }}">
+  {{#if title}}
+  <h4 class="alert-title">{{ title }}</h4>
+  {{/if}}
+  <div class="alert-content">{{ children }}</div>
+</div>
