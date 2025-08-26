@@ -1,12 +1,16 @@
 {
   "name": "axcora",
-  "version": "1.0.0",
+  "version": "1.0.0-alfa",
   "description": "Modern and Super Light Static Site Generator",
   "bin": {
     "axcora": "dist/cli/index.js"
   },
   "main": "dist/index.js",
   "type": "module",
+  "files": [    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "test-css": "node scripts/test-css-simple.js",
     "build": "npm run build-axcora-css && npm run build-css-pages && tsx src/cli/index.ts build",
@@ -69,20 +73,19 @@
     "complete-solution",
     "axcora-framework"
   ],
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/axcora/axcorassg.git"
-	},
-	"author": {
-		"name": "Axcora Team",
-		"email": "axcora@gmail.com",
-		"url": "https://axcora.com/"
-	},
-	"license": "MIT",
-	"engines": {
-		"node": ">=20"
-	},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/axcora/axcorassg.git"
+  },
+  "author": {
+    "name": "Axcora Team",
+    "email": "axcora@gmail.com",
+    "url": "https://axcora.com/"
+  },
   "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "autoprefixer": "^10.4.21",
     "chalk": "^5.3.0",
@@ -117,9 +120,6 @@
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
     "uglify-js": "^3.19.3"
-  },
-  "engines": {
-    "node": ">=20.0.0"
   },
   "axcora": {
     "framework": {

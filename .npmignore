@@ -1,0 +1,10 @@
+src
+static/img
+static/video
+content
+.github
+scripts
+*.cjs
+*.ts
+*.md
+!README.md
