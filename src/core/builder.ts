@@ -244,6 +244,18 @@ export async function build(options: { isDev: boolean }) {
     }
 
     await copyStaticFiles(isDev);
+	try {
+  await fs.mkdir(path.join(PUBLIC_DIR, "css", "dist"), { recursive: true });
+  await fs.cp(
+    path.join(process.cwd(), "static/css/dist"),
+    path.join(PUBLIC_DIR, "css/dist"),
+    { recursive: true }
+  );
+  console.log('✅ [BUILD] Copied CSS bundle to public/css/dist');
+} catch (err) {
+  console.warn('⚠️ [BUILD] Error copying CSS bundle', err);
+}
+
     await generateHomepage(collections, pluginManager);
     await generate404Page(collections, pluginManager);
     await generateSearchIndex(collections, isDev);
