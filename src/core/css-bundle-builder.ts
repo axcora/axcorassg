@@ -59,6 +59,10 @@ export async function generatePerPageCSSBundle(
   const minCSS = new CleanCSS({}).minify(combinedCSS).styles;
   const outPath = path.join(process.cwd(), "static/css/dist", bundleName);
 
+  // PATCH: pastikan folder output ada!
+  await fs.mkdir(path.dirname(outPath), { recursive: true });
+  // END PATCH
+
   await fs.writeFile(outPath, minCSS, "utf-8");
   return `/css/dist/${bundleName}`;
 }
