@@ -1,0 +1,16 @@
+{
+  "name": "axcora-button",
+  "version": "1.0.0",
+  "description": "button component for axcora SSG",
+  "main": "axcora-button.axc",
+  "files": [    "axcora-button.axc"
+  ],
+  "keywords": [    "axcora",
+    "button",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

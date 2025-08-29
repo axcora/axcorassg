@@ -1,0 +1,16 @@
+{
+  "name": "axcora-scrollspy",
+  "version": "1.0.0",
+  "description": "Axcora scrollspy component for axcora SSG",
+  "main": "axcora-scrollspy.axc",
+  "files": [    "axcora-scrollspy.axc"
+  ],
+  "keywords": [    "axcora",
+    "scrollspy",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

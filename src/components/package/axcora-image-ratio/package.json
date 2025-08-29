@@ -1,0 +1,17 @@
+{
+  "name": "axcora-image-ratio",
+  "version": "1.0.0",
+  "description": "Axcora Image ratio component for axcora SSG",
+  "main": "axcora-image-ratio.axc",
+  "files": [    "axcora-image-ratio.axc"
+  ],
+  "keywords": [    "axcora",
+    "image",
+    "ratio",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

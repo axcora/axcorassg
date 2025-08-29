@@ -1,0 +1,16 @@
+{
+  "name": "axcora-card-3",
+  "version": "1.0.0",
+  "description": "3 card component for axcora SSG",
+  "main": "axcora-card-simple.axc",
+  "files": [    "axcora-card-3.axc"
+  ],
+  "keywords": [    "axcora",
+    "card",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

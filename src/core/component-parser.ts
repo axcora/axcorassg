@@ -12,35 +12,68 @@ export class ComponentParser {
   private components = new Map<string, ComponentInfo>();
   private componentsDir = path.join(process.cwd(), 'src', 'components');
 
-  async loadComponents(): Promise<void> {
-    try {
-      await fs.access(this.componentsDir);
-      const files = await fs.readdir(this.componentsDir);
-      
-      for (const file of files) {
-        if (file.endsWith('.axc')) {
-          const componentName = path.basename(file, '.axc');
-          const filePath = path.join(this.componentsDir, file);
-          const template = await fs.readFile(filePath, 'utf-8');
-          
-          this.components.set(componentName, {
-            name: componentName,
-            template: template.trim()
-          });
-        }
-      }
-      
-      if (process.env.NODE_ENV === 'development' && this.components.size > 0) {
-        const componentNames = Array.from(this.components.keys());
-        console.log(`✅ Loaded ${this.components.size} components: ${componentNames.join(', ')}`);
-      }
-    } catch (error) {
-      // Components directory doesn't exist or no components found
-      if (process.env.NODE_ENV === 'development') {
-        console.log('⚠️ No components directory found or no components loaded');
+async loadComponents(): Promise<void> {
+  // --- Load local components from src/components
+  try {
+    await fs.access(this.componentsDir);
+    const files = await fs.readdir(this.componentsDir);
+    for (const file of files) {
+      if (file.endsWith('.axc')) {
+        const componentName = path.basename(file, '.axc');
+        const filePath = path.join(this.componentsDir, file);
+        const template = await fs.readFile(filePath, 'utf-8');
+        this.components.set(componentName, {
+          name: componentName,
+          template: template.trim()
+        });
       }
     }
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('⚠️ No local components directory found or no local components loaded.');
+    }
   }
+
+  // --- Load external components from npm (node_modules/axcora-*)
+  try {
+    const nodeModules = path.join(process.cwd(), 'node_modules');
+    const folders = await fs.readdir(nodeModules, { withFileTypes: true });
+    for (const dirent of folders) {
+      // Only pick directories with the axcora- prefix
+      if (dirent.isDirectory() && dirent.name.startsWith('axcora-')) {
+        const npmComponentName = dirent.name.replace(/^axcora-/, '');
+        const axcPath = path.join(nodeModules, dirent.name, `${dirent.name}.axc`);
+        try {
+          const template = await fs.readFile(axcPath, 'utf-8');
+          // Do not overwrite local component if present
+          if (!this.components.has(npmComponentName)) {
+            this.components.set(npmComponentName, {
+              name: npmComponentName,
+              template: template.trim()
+            });
+          }
+        } catch {
+          // Optional: log missing .axc file
+          if (process.env.NODE_ENV === 'development') {
+   //         console.log(`⚠️ NPM component "${dirent.name}" found but no .axc file present.`);
+          }
+        }
+      }
+    }
+  } catch (error) {
+    // node_modules may not exist or may be empty
+    if (process.env.NODE_ENV === 'development') {
+//    console.log('⚠️ node_modules not found or no external npm components detected.');
+    }
+  }
+
+  // --- Log all loaded components
+  if (process.env.NODE_ENV === 'development' && this.components.size > 0) {
+    const componentNames = Array.from(this.components.keys());
+  //console.log(`✅ Loaded ${this.components.size} components: ${componentNames.join(', ')}`);
+  }
+}
+
 
   getComponent(name: string): ComponentInfo | undefined {
     return this.components.get(name);

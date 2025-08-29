@@ -1,0 +1,16 @@
+{
+  "name": "axcora-iframe",
+  "version": "1.0.0",
+  "description": "Axcora iframe component for axcora SSG",
+  "main": "axcora-iframe.axc",
+  "files": [    "axcora-iframe.axc"
+  ],
+  "keywords": [    "axcora",
+    "iframe",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

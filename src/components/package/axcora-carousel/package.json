@@ -1,0 +1,16 @@
+{
+  "name": "axcora-carousel",
+  "version": "1.0.0",
+  "description": "carousel component for axcora SSG",
+  "main": "axcora-carousel.axc",
+  "files": [    "axcora-carousel.axc"
+  ],
+  "keywords": [    "axcora",
+    "carousel",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

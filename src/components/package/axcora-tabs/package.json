@@ -1,0 +1,16 @@
+{
+  "name": "axcora-tabs",
+  "version": "1.0.0",
+  "description": "Axcora tabs component for axcora SSG",
+  "main": "axcora-tabs.axc",
+  "files": [    "axcora-tabs.axc"
+  ],
+  "keywords": [    "axcora",
+    "tabs",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

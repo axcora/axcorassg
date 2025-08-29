@@ -4,17 +4,18 @@ css:
   theme: 'essentials'
   components:
     - buttons
-    - video
     - cards
     - navbar
-    - alerts
+    - badge
+    - glass
     - forms
     - badge
+    - search
     - hero
-    - glass
 js:
   - navbar
   - theme
+  - search
 ---
 <header class="hero mt-5 container">
   <div class="container">
@@ -35,7 +36,7 @@ js:
         <a href="{{hero.button1.url}}" class="btn btn-dark btn-lg">
           {{hero.button1.text}}
         </a>
-        <a href="{{hero.button2.url}}" class="btn btn-light btn-lg">
+        <a href="{{hero.button2.url}}" class="btn btn-warning btn-lg">
           {{hero.button2.text}}
         </a>
       </div>
@@ -52,152 +53,7 @@ js:
   </div>
 </header>
 
-
-
-<div class="container">
-    <div class="col-12 p-3 mb-3">
-      <div class="card p-3">
-      <h2 class="col-12 text-center">
-      {{features.title}}
-    </h2>
-    </div> 
-    </div>
-
-
-  <div class="card">
-  <div class="row">
-   <div class="col-md-4 p-5">
-        <img class="img-responsive rounded-md shadow-sm" alt="{{features.section1.title}}" width="30" height="30" src="{{features.section1.icon}}" loading="eager"/> 
-      <h3><strong><a href="{{url}}" class="text-decoration-none">{{features.section1.title}}</a></strong></h3>
-      <p>{{features.section1.text}}</p>
-    </div>
-
-   <div class="col-md-8 p-5">
-        <img class="img-responsive rounded-md shadow-sm" alt="{{features.section2.title}}" width="30" height="30" src="{{features.section2.icon}}" loading="eager"/> 
-      <h3><strong><a href="{{url}}" class="text-decoration-none">{{features.section2.title}}</a></strong></h3>
-      <p>{{features.section2.text}}</p>
-        <div class="p-1">
-          <pre class="bg-dark rounded-md text-light"><code>
- css:
-  theme: 'dark'
-  components:
-    - buttons
-    - cards
-
-          </code></pre>
-      </div>
-    </div>
-
-<div class="col-md-8 p-5">
-  <h3>{{features.section1.start.title}}</h3>
-  <p>{{features.section1.start.text}}</p>
-  <p>
-    <a href="{{features.section1.start.download.url}}" class="btn btn-sm btn-primary">
-      {{features.section1.start.download.text}}
-    </a>
-  </p>
-  <div class="row">
-    {{#each features.section1.start.commandline }}
-      <div class="col-md-4 p-3">
-        {{text}}
-      </div>
-      <div class="col-md-8 p-2">
-        <div class="bg-dark text-light p-1 rounded-md">
-          <div style="display: flex; justify-content: flex-end;">
-            <button
-              onclick="copyCommand('command{{@index}}')"
-              class="btn btn-primary btn-sm">
-              Copy
-            </button>
-          </div>
-          <pre class="p-2"><code id="command{{@index}}">{{command}}</code></pre>
-        </div>
-      </div>
-    {{/each}}
-  </div>
-</div>
-
-<div class="col-md-4 p-5">
-  <h3>{{features.section1.css.title}}</h3>
-  <p>{{features.section1.css.text}}</p>
-  <p>
-    <a href="{{features.section1.css.button.url}}" class="btn btn-sm btn-primary">
-      {{features.section1.css.button.text}}
-    </a>
-  </p>
-<div class="row">
-  <div class="col-md-12 p-3">
-    {{features.section1.css.npm.text}}
-    <div class="bg-dark text-light p-1 rounded-md">
-      <div style="display: flex; justify-content: flex-end;">
-        <button
-          onclick="copyCommand('commandNPM')"
-          class="btn btn-primary btn-sm">
-          Copy
-        </button>
-      </div>
-      <pre class="p-2"><code id="commandNPM">{{features.section1.css.npm.command}}</code></pre>
-    </div>
-  </div>
-  <div class="col-md-12 p-3">
-    {{features.section1.css.cdn.text}}
-    <div class="bg-dark text-light p-1 rounded-md">
-      <div style="display: flex; justify-content: flex-end;">
-        <button
-          onclick="copyCommand('commandCDN')"
-          class="btn btn-primary btn-sm">
-          Copy
-        </button>
-      </div>
-      <pre class="p-2"><code id="commandCDN">{{features.section1.css.cdn.command}}</code></pre>
-    </div>
-  </div>
-</div>
-
-</div>
-
-      </div>
-    </div>
-
-  <div class="row justify-center mt-3">
-    {{#each features.list1}}
-    <div class="col-md-3 p-3">
-      <div class="card p-5">
-        <img class="img-responsive rounded-md shadow-sm" alt="{{title}}" width="30" height="30" src="{{icon}}" loading="eager"/> 
-        <h3><strong><a href="{{url}}" class="text-decoration-none">{{title}}</a></strong></h3>
-        <p>{{text}}</p>
-      </div>
-    </div>
-    {{/each}}
-    {{#each features.list2}}
-    <div class="col-md-4 p-3">
-      <div class="card p-5">
-        <img class="img-responsive rounded-md shadow-sm" alt="{{title}}" width="30" height="30" src="{{icon}}" loading="eager"/> 
-        <h3><strong><a href="{{url}}" class="text-decoration-none">{{title}}</a></strong></h3>
-        <p>{{text}}</p>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-
-  <div class="card mt-3">
-  <div class="row">
-   <div class="col-md-6 p-5">
-      <h3><strong><a href="{{url}}" class="text-decoration-none">{{work.title}}</a></strong></h3>
-      {{#each work.list}}<li>{{text}}</li>{{/each}}
-    </div>
-   <div class="col-md-6 p-5">
-      <h3><strong><a href="{{url}}" class="text-decoration-none">{{why.title}}</a></strong></h3>
-      {{#each why.list}}<li>{{text}}</li>{{/each}}
-    </div>
-  </div>
-  </div>
-
-</div>
-
-
-<div class="container p-5">
-        {{#if site.search.enabled}}
+{{#if site.search.enabled}}<div class="container p-5">
       <div class="search-container">
         <div class="search-input-wrapper">
           <input 
@@ -209,8 +65,7 @@ js:
         </div>
         <div id="searchResults" class="search-results"></div>
       </div>
-      {{/if}}
-</div>
+</div>{{/if}}
 
 
 {{#if site.show_blog_list}}
@@ -231,10 +86,10 @@ js:
       <div class="card-body">
          {{#if image}}
 	     <a href="{{ url }}" title="{{description}}">
-		{% axcora-image src="{{image or site.image}}" alt="{{title}}" /%}
+		{% axcora-image-fluid image="{{image}}" alt="{{title}}" /%}
 		</a>
 	  {{/if}}
-        <span class="text-small text-white">{{ date | formatDate }}</span>
+        <span class="text-small">{{ date | formatDate }}</span>
         {{#if category}}
         <span class="ms-3"><a href="categories/{{ category_slug }}/" 
         class="btn btn-info btn-sm">{{ category }}</a></span>
@@ -257,18 +112,3 @@ js:
 </div>
 </div>
 {{/if}}
-
-<script>
-function copyCommand(id) {
-  var text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text)
-    .then(function() {
-      Framework.showToast('Copied', 'primary');
-    }, function(err) {
-      Framework.showToast('Failed', 'danger');
-    });
-}
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>

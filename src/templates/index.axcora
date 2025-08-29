@@ -34,7 +34,7 @@ js:
         <a href="{{hero.button1.url}}" class="btn btn-dark btn-lg">
           {{hero.button1.text}}
         </a>
-        <a href="{{hero.button2.url}}" class="btn btn-light btn-lg">
+        <a href="{{hero.button2.url}}" class="btn btn-warning btn-lg">
           {{hero.button2.text}}
         </a>
       </div>
@@ -139,6 +139,19 @@ js:
     </div>
   </div>
   <div class="col-md-12 p-3">
+    {{features.section1.css.node.text}}
+    <div class="bg-dark text-light p-1 rounded-md">
+      <div style="display: flex; justify-content: flex-end;">
+        <button
+          onclick="copyCommand('commandNode')"
+          class="btn btn-primary btn-sm">
+          Copy
+        </button>
+      </div>
+      <pre class="p-2"><code id="commandNode">{{features.section1.css.node.command}}</code></pre>
+    </div>
+  </div>
+  <div class="col-md-12 p-3">
     {{features.section1.css.cdn.text}}
     <div class="bg-dark text-light p-1 rounded-md">
       <div style="display: flex; justify-content: flex-end;">
@@ -149,6 +162,19 @@ js:
         </button>
       </div>
       <pre class="p-2"><code id="commandCDN">{{features.section1.css.cdn.command}}</code></pre>
+    </div>
+  </div>
+  <div class="col-md-12 p-3">
+    {{features.section1.css.js.text}}
+    <div class="bg-dark text-light p-1 rounded-md">
+      <div style="display: flex; justify-content: flex-end;">
+        <button
+          onclick="copyCommand('commandCDN')"
+          class="btn btn-primary btn-sm">
+          Copy
+        </button>
+      </div>
+      <pre class="p-2"><code id="commandCDN">{{features.section1.css.js.command}}</code></pre>
     </div>
   </div>
 </div>
@@ -183,11 +209,11 @@ js:
   <div class="row">
    <div class="col-md-6 p-5">
       <h3><strong><a href="{{url}}" class="text-decoration-none">{{work.title}}</a></strong></h3>
-      {{#each work.list}}<li>{{text}}</li>{{/each}}
+      <ul>{{#each work.list}}<li>{{text}}</li>{{/each}}</ul>
     </div>
    <div class="col-md-6 p-5">
       <h3><strong><a href="{{url}}" class="text-decoration-none">{{why.title}}</a></strong></h3>
-      {{#each why.list}}<li>{{text}}</li>{{/each}}
+      <ul>{{#each why.list}}<li>{{text}}</li>{{/each}}</ul>
     </div>
   </div>
   </div>

@@ -10,11 +10,11 @@ export interface CssConfig {
 }
 
 /**
- * Gabung dan minify CSS sesuai kebutuhan per halaman
+ * minify CSS per components per page / per content
  * @param cssConfig 
  * @param globalTheme 
- * @param bundleName (output filename, misal: single-accordion-card.min.css)
- * @returns path bundle CSS untuk dipakai di <link>
+ * @param bundleName
+ * @returns
  */
 export async function generatePerPageCSSBundle(
   cssConfig: CssConfig = {},
@@ -24,19 +24,39 @@ export async function generatePerPageCSSBundle(
   const cssParts: string[] = [];
 
   // Base CSS
+try {
+  const basePath = path.join(process.cwd(), "static/css/axcora-base.css");
+  cssParts.push(await fs.readFile(basePath, "utf-8"));
+} catch {
   try {
-    const basePath = path.join(process.cwd(), "static/css/axcora-base.css");
-    cssParts.push(await fs.readFile(basePath, "utf-8"));
-  } catch {}
+    const nodeBasePath = path.join(process.cwd(), "node_modules", "axcora-css", "axcora-base.css");
+    cssParts.push(await fs.readFile(nodeBasePath, "utf-8"));
+  } catch {
+//    console.warn(`⚠️ axcora-base.css nothing found static/css or node_modules/axcora-css`);
+  }
+}
 
   // Theme
-  const themeName = cssConfig.theme || globalTheme;
-  if (themeName && themeName !== "default") {
+const themeName = cssConfig.theme || globalTheme;
+if (themeName && themeName !== "default") {
+  let themePath = path.join(process.cwd(), "static/css/themes", themeName, "theme.css");
+  try {
+    cssParts.push(await fs.readFile(themePath, "utf-8"));
+  } catch {
     try {
-      const themePath = path.join(process.cwd(), "static/css/themes", themeName, "theme.css");
+      themePath = path.join(process.cwd(), "node_modules", `axcora-theme-${themeName}`, "theme.css");
       cssParts.push(await fs.readFile(themePath, "utf-8"));
-    } catch {}
+    } catch {
+      try {
+        themePath = path.join(process.cwd(), "node_modules", "axcora-themes", themeName, "theme.css");
+        cssParts.push(await fs.readFile(themePath, "utf-8"));
+      } catch {
+    //    console.warn(`⚠️ Theme "${themeName}" tidak ditemukan di static/css/themes, axcora-theme-${themeName}, ataupun axcora-themes/${themeName}`);
+      }
+    }
   }
+}
+
 
   // Komponen
   for (const comp of cssConfig.components || []) {

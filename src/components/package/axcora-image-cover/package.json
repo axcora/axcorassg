@@ -1,0 +1,17 @@
+{
+  "name": "axcora-image-cover",
+  "version": "1.0.0",
+  "description": "Axcora Image Cover component for axcora SSG",
+  "main": "axcora-image-cover.axc",
+  "files": [    "axcora-image-cover.axc"
+  ],
+  "keywords": [    "axcora",
+    "image",
+    "cover",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

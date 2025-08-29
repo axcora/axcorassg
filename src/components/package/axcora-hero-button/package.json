@@ -1,0 +1,16 @@
+{
+  "name": "axcora-hero-button",
+  "version": "1.0.0",
+  "description": "Axcora hero component for axcora SSG",
+  "main": "axcora-hero-button.axc",
+  "files": [    "axcora-hero-button.axc"
+  ],
+  "keywords": [    "axcora",
+    "hero",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

@@ -190,16 +190,16 @@ export async function build(options: { isDev: boolean }) {
     await fs.mkdir(PUBLIC_DIR, { recursive: true });
 
     // CRITICAL FIX: Load components FIRST before everything else
-    console.log(chalk.blue("🧩 Loading components..."));
+//    console.log(chalk.blue("🧩 Loading components..."));
     const componentParser = new ComponentParser();
     await componentParser.loadComponents();
     setComponentParser(componentParser);
     
     const loadedComponents = componentParser.getComponentNames();
-    console.log(chalk.green(`✅ ${loadedComponents.length} components loaded: ${loadedComponents.join(', ')}`));
+  //  console.log(chalk.green(`✅ ${loadedComponents.length} components loaded: ${loadedComponents.join(', ')}`));
 
     // THEN build collections (markdown processing will have components available)
-    console.log(chalk.blue("📦 Building collections..."));
+//    console.log(chalk.blue("📦 Building collections..."));
     const collections = await buildCollections();
 	
     const pluginManager = new PluginManager(config, collections);
@@ -254,7 +254,7 @@ export async function build(options: { isDev: boolean }) {
     path.join(PUBLIC_DIR, "css/dist"),
     { recursive: true }
   );
-  console.log('✅ [BUILD] Copied CSS bundle to public/css/dist');
+//  console.log('✅ [BUILD] Copied CSS bundle to public/css/dist');
 } catch (err) {
   console.warn('⚠️ [BUILD] Error copying CSS bundle', err);
 }
@@ -267,6 +267,7 @@ export async function build(options: { isDev: boolean }) {
     await pluginManager.executeHook('buildEnd');
     
     if (!isDev) {
+
       console.log(chalk.green('✅ Build completed successfully!'));
       console.log(chalk.blue(`📁 Output: ${PUBLIC_DIR}`));
       // 🎯 NEW: Show generator info
@@ -357,10 +358,6 @@ const pagination = {
       pluginManager
     );
     
-    // 🐛 DEBUG: Log pagination info (remove in production)
-    if (!isDev && page === 0) {
-      console.log(chalk.blue(`📖 ${collectionName} pagination: ${totalPages} pages, ${POSTS_PER_PAGE} posts per page`));
-    }
   }
 
 for (let i = 0; i < items.length; i++) {
@@ -390,9 +387,7 @@ const categorySlug = item.category ? slugify(item.category) : '';
   );
 }
 
-  if (!isDev) {
-    console.log(chalk.green(`✅ ${collectionName}: ${items.length} pages (${totalPages} list pages)`));
-  }
+
 }
 
 async function renderPageWithPlugins(templatePath: string, data: any, outputPath: string, pluginManager: PluginManager) {
@@ -546,7 +541,7 @@ completeData.jsLinks = `<script src="${siteUrl}${perPageJsLink}"></script>`;
 
 async function generateHomepage(collections: any, pluginManager: PluginManager) {
   try {
-    console.log(chalk.blue("🏠 Generating homepage..."));
+//    console.log(chalk.blue("🏠 Generating homepage..."));
     
     const indexContent = await loadPageContent('index');
     
@@ -554,9 +549,9 @@ async function generateHomepage(collections: any, pluginManager: PluginManager) 
     const blogPosts = collections.blog || [];
     
     // 🐛 DEBUG: Log blog posts info
-    console.log(chalk.cyan(`📝 Blog posts for homepage: ${blogPosts.length} found`));
+  //  console.log(chalk.cyan(`📝 Blog posts for homepage: ${blogPosts.length} found`));
     if (blogPosts.length > 0) {
-      console.log(chalk.blue(`🔗 Sample post: ${blogPosts[0]?.title} -> ${blogPosts[0]?.url}`));
+//      console.log(chalk.blue(`🔗 Sample post: ${blogPosts[0]?.title} -> ${blogPosts[0]?.url}`));
     }
     
     // ✅ FIX: Pastikan setiap post punya URL yang benar
@@ -606,7 +601,7 @@ async function generateHomepage(collections: any, pluginManager: PluginManager) 
     };
     
     // 🐛 DEBUG: Log home data
-    console.log(chalk.cyan(`📊 Homepage data: ${homeData.posts.length} posts ready`));
+  //  console.log(chalk.cyan(`📊 Homepage data: ${homeData.posts.length} posts ready`));
     
     // ✅ Render index.axcora template directly
     await renderPageWithPlugins(
@@ -616,7 +611,7 @@ async function generateHomepage(collections: any, pluginManager: PluginManager) 
       pluginManager
     );
     
-    console.log(chalk.green("✅ Homepage generated successfully"));
+//    console.log(chalk.green("✅ Homepage generated successfully"));
     
   } catch (error) {
     console.error(chalk.red("❌ Homepage generation failed:"), error);
@@ -742,7 +737,7 @@ async function generateHomepage(collections: any, pluginManager: PluginManager) 
 <body>
   <div class="container">
     <div class="logo">
-      <img src="/img/logo.png" alt="Axcora Logo" loading="lazy">
+      <img src="/img/logo.jpg" alt="Axcora Logo" loading="lazy">
     </div>
     <div class="subtitle">Homepage Template Error</div>
     <h1>Axcora Framework</h1>
@@ -795,9 +790,6 @@ async function generateStaticPages(collections: any, pluginManager: PluginManage
     }
   }
   
-  if (!isDev) {
-    console.log(chalk.green(`✅ Static pages: ${collections.pages.length} pages`));
-  }
 }
 
 async function generateTagsPages(collections: any, pluginManager: PluginManager, isDev: boolean) {
@@ -831,9 +823,6 @@ async function generateTagsPages(collections: any, pluginManager: PluginManager,
     );
   }
   
-  if (!isDev) {
-    console.log(chalk.green(`✅ Tags: ${Object.keys(collections.tags).length} pages`));
-  }
 }
 
 async function generateCategoriesPages(collections: any, pluginManager: PluginManager, isDev: boolean) {
@@ -867,9 +856,6 @@ async function generateCategoriesPages(collections: any, pluginManager: PluginMa
     );
   }
   
-  if (!isDev) {
-    console.log(chalk.green(`✅ Categories: ${Object.keys(collections.categories).length} pages`));
-  }
 }
 
 async function generate404Page(collections: any, pluginManager: PluginManager) {
@@ -938,7 +924,8 @@ js:
   </div>
 </header>
 
-  <article class="row mt-3">
+  <article class="container">
+  <div class="row mt-3">
   {{#each posts}}
 	<div class="col-6 p-2">
 	<div class="card p-3">  
@@ -968,7 +955,7 @@ js:
 	</div>
 	</div>
   {{/each}}
- </article>
+  </div>
 <ul class="pagination">
   {{#if pagination.hasPrev}} <li class="page-item">
     <a class="btn btn-primary" href="{{ pagination.prevLink }}" tabindex="-1">Previous</a>
@@ -981,6 +968,7 @@ js:
         <a class="btn btn-primary" href="{{ pagination.nextLink }}">Next</a>
     </li>{{/if}}
 </ul>
+ </article>
 </main>`;
 
   await fs.writeFile(path.join(templateDir, "list.axcora"), listContent);

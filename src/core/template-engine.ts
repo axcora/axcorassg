@@ -5,7 +5,7 @@ import chalk from "chalk";
 
 export function renderAxcora(template: string, data: Record<string, any>): string {
   try {
-    console.log(chalk.gray(`🎨 Rendering template (${template.length} chars)...`));
+//    console.log(chalk.gray(`🎨 Rendering template (${template.length} chars)...`));
     
     // Handle includes first
     template = processIncludes(template, data);
@@ -25,7 +25,7 @@ export function renderAxcora(template: string, data: Record<string, any>): strin
     // Handle simple variables and filters
     template = processVariables(template, data);
 
-    console.log(chalk.gray(`✅ Template rendered successfully`));
+//    console.log(chalk.gray(`✅ Template rendered successfully`));
     return template;
   } catch (error) {
     // FIXED: Proper error type handling
@@ -120,13 +120,13 @@ function processIfElseConditions(template: string, data: Record<string, any>): s
     template = template.replace(
       /{{#if\s+([^{}]+?)}}((?:(?!{{#if|{{else}}|{{\/if}})[\s\S])*?)(?:{{else}}((?:(?!{{#if|{{\/if}})[\s\S])*?))?{{\/if}}/g,
       (match, condition, ifContent, elseContent) => {
-        console.log(chalk.gray(`   🔍 Processing if/else: "${condition.trim()}"`));
+  //    console.log(chalk.gray(`   🔍 Processing if/else: "${condition.trim()}"`));
         
         const conditionResult = evaluateCondition(condition.trim(), data);
-        console.log(chalk.gray(`   📊 Condition result: ${conditionResult}`));
+   //     console.log(chalk.gray(`   📊 Condition result: ${conditionResult}`));
         
         if (conditionResult) {
-          console.log(chalk.gray(`   ✅ Taking IF branch`));
+  //        console.log(chalk.gray(`   ✅ Taking IF branch`));
           return renderAxcora(ifContent, data);
         } else if (elseContent !== undefined) {
           console.log(chalk.gray(`   ❌ Taking ELSE branch`));
@@ -142,13 +142,13 @@ function processIfElseConditions(template: string, data: Record<string, any>): s
     template = template.replace(
       /{{#if\s+([^{}]+?)}}((?:(?!{{#if|{{else}}|{{\/if}})[\s\S])*?){{\/if}}/g,
       (match, condition, content) => {
-        console.log(chalk.gray(`   🔍 Processing simple if: "${condition.trim()}"`));
-        
+//      console.log(chalk.gray(`   🔍 Processing simple if: "${condition.trim()}"`));
+   //     
         const conditionResult = evaluateCondition(condition.trim(), data);
-        console.log(chalk.gray(`   📊 Condition result: ${conditionResult}`));
+    //    console.log(chalk.gray(`   📊 Condition result: ${conditionResult}`));
         
         if (conditionResult) {
-          console.log(chalk.gray(`   ✅ Taking IF branch`));
+     //     console.log(chalk.gray(`   ✅ Taking IF branch`));
           return renderAxcora(content, data);
         } else {
           console.log(chalk.gray(`   ❌ Condition false, returning empty`));
@@ -246,13 +246,13 @@ function getLength(value: any): string {
 // ✅ IMPROVED: Better condition evaluation
 function evaluateCondition(condition: string, data: Record<string, any>): boolean {
   try {
-    console.log(chalk.gray(`   🔍 Evaluating: "${condition}" with data keys: ${Object.keys(data).join(', ')}`));
+ // console.log(chalk.gray(`   🔍 Evaluating: "${condition}" with data keys: ${Object.keys(data).join(', ')}`));
     
     if (condition.includes('===')) {
       const [left, right] = condition.split('===').map(s => s.trim());
       const leftValue = evaluateExpression(left, data);
       const rightValue = evaluateExpression(right, data);
-      console.log(chalk.gray(`   📊 Comparing: "${leftValue}" === "${rightValue}"`));
+  //    console.log(chalk.gray(`   📊 Comparing: "${leftValue}" === "${rightValue}"`));
       return leftValue === rightValue;
     }
     
@@ -265,12 +265,12 @@ function evaluateCondition(condition: string, data: Record<string, any>): boolea
       }
       
       const result = Array.isArray(arrayValue) ? arrayValue.length > 0 : false;
-      console.log(chalk.gray(`   📊 Array length check: ${arrayKey} = ${JSON.stringify(arrayValue)} → ${result}`));
+  //    console.log(chalk.gray(`   📊 Array length check: ${arrayKey} = ${JSON.stringify(arrayValue)} → ${result}`));
       return result;
     }
     
     const value = getNestedValue(data, condition);
-    console.log(chalk.gray(`   📊 Value check: ${condition} = ${JSON.stringify(value)}`));
+//    console.log(chalk.gray(`   📊 Value check: ${condition} = ${JSON.stringify(value)}`));
     
     // ✅ FIXED: Better truthiness evaluation
     if (value === undefined || value === null) {

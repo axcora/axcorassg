@@ -1,0 +1,16 @@
+{
+  "name": "axcora-blockquote",
+  "version": "1.0.0",
+  "description": "blockquote component for axcora SSG",
+  "main": "axcora-blockquote.axc",
+  "files": [    "axcora-blockquote.axc"
+  ],
+  "keywords": [    "axcora",
+    "blockquote",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

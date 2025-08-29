@@ -10,7 +10,7 @@ export async function processShortcodes(content: string, data: any): Promise<str
     return content; // No shortcodes, return as-is
   }
   
-  console.log(chalk.blue('🔧 Processing shortcodes...'));
+//  console.log(chalk.blue('🔧 Processing shortcodes...'));
   
   // ✅ STEP 2: PROTECT raw blocks and code blocks (MINIMAL PROTECTION)
   const protectedItems: Record<string, string> = {};
@@ -44,14 +44,14 @@ export async function processShortcodes(content: string, data: any): Promise<str
     const selfClosingRegex = /{%\s*(\w+(?:-\w+)*)\s*([^%]*?)\s*\/%}/g;
     let matches = Array.from(processed.matchAll(selfClosingRegex));
     
-    console.log(chalk.gray(`  Found ${matches.length} self-closing shortcodes`));
+//    console.log(chalk.gray(`  Found ${matches.length} self-closing shortcodes`));
     
     for (const match of matches) {
       const [fullMatch, componentName, attributesStr] = match;
       
       const component = componentParser.getComponent(componentName);
       if (!component) {
-        console.warn(chalk.yellow(`  ⚠️ Component '${componentName}' not found`));
+  //    console.warn(chalk.yellow(`  ⚠️ Component '${componentName}' not found`));
         continue;
       }
       
@@ -63,21 +63,21 @@ export async function processShortcodes(content: string, data: any): Promise<str
       });
       
       processed = processed.replace(fullMatch, renderedComponent);
-      console.log(chalk.green(`  ✅ Processed: ${componentName}`));
+//      console.log(chalk.green(`  ✅ Processed: ${componentName}`));
     }
     
     // Process block shortcodes
     const blockRegex = /{%\s*(\w+(?:-\w+)*)\s*([^%]*?)\s*%}([\s\S]*?){%\s*\/\1\s*%}/g;
     matches = Array.from(processed.matchAll(blockRegex));
     
-    console.log(chalk.gray(`  Found ${matches.length} block shortcodes`));
+//    console.log(chalk.gray(`  Found ${matches.length} block shortcodes`));
     
     for (const match of matches) {
       const [fullMatch, componentName, attributesStr, children] = match;
       
       const component = componentParser.getComponent(componentName);
       if (!component) {
-        console.warn(chalk.yellow(`  ⚠️ Component '${componentName}' not found`));
+//      console.warn(chalk.yellow(`  ⚠️ Component '${componentName}' not found`));
         continue;
       }
       
@@ -89,11 +89,11 @@ export async function processShortcodes(content: string, data: any): Promise<str
       });
       
       processed = processed.replace(fullMatch, renderedComponent);
-      console.log(chalk.green(`  ✅ Processed: ${componentName}`));
+  //    console.log(chalk.green(`  ✅ Processed: ${componentName}`));
     }
     
     if (processed !== content) {
-      console.log(chalk.green('✅ Shortcode processing complete'));
+//      console.log(chalk.green('✅ Shortcode processing complete'));
     }
     
   } catch (error) {

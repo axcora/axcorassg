@@ -1,0 +1,16 @@
+{
+  "name": "axcora-badge",
+  "version": "1.0.0",
+  "description": "badge component for axcora SSG",
+  "main": "axcora-badge.axc",
+  "files": [    "axcora-badge.axc"
+  ],
+  "keywords": [    "axcora",
+    "badge",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

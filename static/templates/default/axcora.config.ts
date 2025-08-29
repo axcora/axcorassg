@@ -5,7 +5,7 @@ export default defineConfig({
   site: {
     title: "Axcora SSG",
     description: "Modern Static Site Generator with TypeScript", 
-    url: "https://axcora.com",
+    url: "https://www.axcora.com",
     author: "Axcora Team and Creativitas Dev"
   },
     generator: {

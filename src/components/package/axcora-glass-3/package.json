@@ -1,0 +1,16 @@
+{
+  "name": "axcora-glass-3",
+  "version": "1.0.0",
+  "description": "Axcora glass-3 component for axcora SSG",
+  "main": "axcora-glass-3.axc",
+  "files": [    "axcora-glass-3.axc"
+  ],
+  "keywords": [    "axcora",
+    "glass",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

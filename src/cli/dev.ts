@@ -278,7 +278,7 @@ function displayServerInfo(port: number) {
   const url = `http://localhost:${port}`;
   
   console.log(`
-${chalk.bgGreen.black(' ✅ AXCCORA SERVER READY ')}
+${chalk.bgGreen.black(' ✅ AXCORA SERVER READY ')}
 
 ${chalk.cyan.underline(url)} ${chalk.gray('← Click here!')}
 

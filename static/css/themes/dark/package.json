@@ -1,0 +1,10 @@
+{
+  "name": "axcora-theme-dark",
+  "version": "1.0.0",
+  "description": "dark theme for axcora",
+  "main": "theme.css",
+  "files": [    "theme.css"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

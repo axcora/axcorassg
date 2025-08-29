@@ -1,0 +1,16 @@
+{
+  "name": "axcora-search",
+  "version": "1.0.0",
+  "description": "Axcora search component for axcora SSG",
+  "main": "axcora-search.axc",
+  "files": [    "axcora-search.axc"
+  ],
+  "keywords": [    "axcora",
+    "search",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

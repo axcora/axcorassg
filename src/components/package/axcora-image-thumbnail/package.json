@@ -1,0 +1,17 @@
+{
+  "name": "axcora-image-thumbnail",
+  "version": "1.0.0",
+  "description": "Axcora Image thumbnail component for axcora SSG",
+  "main": "axcora-image-thumbnail.axc",
+  "files": [    "axcora-image-thumbnail.axc"
+  ],
+  "keywords": [    "axcora",
+    "image",
+    "thumbnail",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

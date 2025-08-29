@@ -1,0 +1,22 @@
+<div class="row">
+<div class="col-md-6 p-2">
+<div class="card">
+    <div class="card-header">{{title1}}</div>
+    <div class="card-body">
+        <h5>{{card_title1}}</h5>
+        <p>{{text1}}</p>
+    </div>
+    <div class="card-footer">{{footer1}}</div>
+</div>
+</div>
+<div class="col-md-6 p-2">
+<div class="card">
+    <div class="card-header">{{title2}}</div>
+    <div class="card-body">
+        <h5>{{card_title2}}</h5>
+        <p>{{text2}}</p>
+    </div>
+    <div class="card-footer">{{footer2}}</div>
+</div>
+</div>
+</div>

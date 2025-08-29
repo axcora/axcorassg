@@ -11,13 +11,15 @@ if (!fs.existsSync(DIST_DIR)) fs.mkdirSync(DIST_DIR, { recursive: true });
 const pages = globSync('src/templates/**/*.axcora');
 const mapping = {};
 
+let total = 0; // counter
+
 pages.forEach((filepath) => {
   const filecontent = fs.readFileSync(filepath, 'utf8');
   const meta = matter(filecontent).data;
   if (!meta.css) return;
 
   let cssFiles = [    'static/css/axcora-base.css',
-    ...meta.css.components.map(c => `static/css/components/${c}.css`),
+    ...(meta.css.components||[]).map(c => `static/css/components/${c}.css`),
     `static/css/themes/${meta.css.theme}/theme.css`
   ];
 
@@ -28,9 +30,13 @@ pages.forEach((filepath) => {
     let slug = path.basename(filepath, '.axcora');
     let outName = `axcora-${slug}.min.css`;
     fs.writeFileSync(path.join(DIST_DIR, outName), result.css);
-    // Simpan mapping (bisa juga simpan ke json)
     mapping[slug] = outName;
-    // Optionally, save mapping to JSON for SSG HTML render
     fs.writeFileSync(path.join(DIST_DIR, 'css-bundle-map.json'), JSON.stringify(mapping, null, 2));
+    total++;
+    // ONLY log after ALL done
+    if (total === pages.length) {
+      // Only print summary once everything is done
+      console.log(`[AXCORA CSS-PAGES] Bundled ${total} css pages to static/css/dist`);
+    }
   });
 });

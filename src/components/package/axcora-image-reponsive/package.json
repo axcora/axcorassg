@@ -1,0 +1,17 @@
+{
+  "name": "axcora-image-responsive",
+  "version": "1.0.0",
+  "description": "Axcora Image responsive component for axcora SSG",
+  "main": "axcora-image-responsive.axc",
+  "files": [    "axcora-image-responsive.axc"
+  ],
+  "keywords": [    "axcora",
+    "image",
+    "responsive",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

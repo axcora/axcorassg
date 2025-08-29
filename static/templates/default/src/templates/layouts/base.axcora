@@ -9,6 +9,8 @@
 {{ cssLinks }}
 </head>
 <body>
+{% include header.axcora %}
 {{ content }}
+{% include footer.axcora %}
 </body>
 </html>

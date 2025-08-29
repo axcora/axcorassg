@@ -1,0 +1,16 @@
+{
+  "name": "axcora-modal",
+  "version": "1.0.0",
+  "description": "Axcora Modal component for axcora SSG",
+  "main": "axcora-modal.axc",
+  "files": [    "axcora-modal.axc"
+  ],
+  "keywords": [    "axcora",
+    "modal",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

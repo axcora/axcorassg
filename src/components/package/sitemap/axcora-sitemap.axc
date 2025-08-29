@@ -1,0 +1,110 @@
+<!-- Sitemap Component -->
+<div class="sitemap-container">
+  <h2>📍 Sitemap</h2>
+  <div class="sitemap-grid">
+    
+    {{#if collections.blog.length}}
+    <div class="sitemap-section">
+      <h3>📝 Blog Posts</h3>
+      <ul class="sitemap-list">
+        {{#each collections.blog}}
+        <li><a href="{{ url }}">{{ title }}</a> <small>({{ date | formatDate }})</small></li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+    
+    {{#if collections.docs.length}}
+    <div class="sitemap-section">
+      <h3>📚 Documentation</h3>
+      <ul class="sitemap-list">
+        {{#each collections.docs}}
+        <li><a href="{{ url }}">{{ title }}</a></li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+    
+    {{#if collections.pages.length}}
+    <div class="sitemap-section">
+      <h3>📄 Pages</h3>
+      <ul class="sitemap-list">
+        {{#each collections.pages}}
+        <li><a href="{{ url }}">{{ title }}</a></li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+    
+    {{#if (keys collections.tags)}}
+    <div class="sitemap-section">
+      <h3>🏷️ Tags</h3>
+      <ul class="sitemap-list">
+        {{#each collections.tags}}
+        <li><a href="/tags/{{ @key }}/">{{ @key }}</a> <small>({{ this.length }} posts)</small></li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+  </div>
+</div>
+
+<style>
+.sitemap-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+}
+
+.sitemap-container h2 {
+  margin: 0 0 1.5rem;
+  color: #1f2937;
+}
+
+.sitemap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.sitemap-section h3 {
+  margin: 0 0 1rem;
+  color: #374151;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.sitemap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sitemap-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.sitemap-list li:last-child {
+  border-bottom: none;
+}
+
+.sitemap-list a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sitemap-list a:hover {
+  text-decoration: underline;
+}
+
+.sitemap-list small {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+</style>

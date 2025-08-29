@@ -1,0 +1,16 @@
+{
+  "name": "axcora-image",
+  "version": "1.0.0",
+  "description": "Axcora Image component for axcora SSG",
+  "main": "axcora-image.axc",
+  "files": [    "axcora-image.axc"
+  ],
+  "keywords": [    "axcora",
+    "image",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

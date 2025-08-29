@@ -1,0 +1,10 @@
+{
+  "name": "axcora-theme-brutal",
+  "version": "1.0.0",
+  "description": "brutal theme for axcora",
+  "main": "theme.css",
+  "files": [    "theme.css"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

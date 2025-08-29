@@ -471,7 +471,8 @@ async function initProject(projectName: string) {
     console.log(chalk.gray('\n💡 Next steps:'));
     console.log(chalk.gray(`   cd ${projectName}`));
     console.log(chalk.gray('   npm install'));
-    console.log(chalk.gray('   npm run dev'));
+    console.log(chalk.gray('   npm run axcora'));
+    console.log(chalk.gray('   npm run dev or axcora dev'));
   } catch (error) {
     throw new Error(`Failed to initialize project: ${error}`);
   }

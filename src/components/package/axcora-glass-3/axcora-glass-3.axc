@@ -1,0 +1,20 @@
+<div class="row">
+<div class="col-md-4 p-2">
+<div class="glass p-4">
+        <h5>{{title1}}</h5>
+        <p>{{text1}}</p>
+</div>
+</div>
+<div class="col-md-4 p-2">
+<div class="glass p-4">
+        <h5>{{title2}}</h5>
+        <p>{{text2}}</p>
+</div>
+</div>
+<div class="col-md-4 p-2">
+<div class="glass p-4">
+        <h5>{{title3}}</h5>
+        <p>{{text3}}</p>
+</div>
+</div>
+</div>

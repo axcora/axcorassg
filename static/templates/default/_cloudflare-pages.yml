@@ -1,8 +1,8 @@
 build:
-  command: npm install && npx axcora build
+  command: npm install && npm run build
   output: public
   environment:
-    NODE_VERSION: "18"
+    NODE_VERSION: "20"
     
 routing:
   - source: "/assets/*"

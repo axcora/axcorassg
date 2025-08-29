@@ -1,0 +1,16 @@
+{
+  "name": "axcora-youtube",
+  "version": "1.0.0",
+  "description": "Axcora youtube component for axcora SSG",
+  "main": "axcora-youtube.axc",
+  "files": [    "axcora-youtube.axc"
+  ],
+  "keywords": [    "axcora",
+    "youtube",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

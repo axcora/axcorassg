@@ -53,11 +53,11 @@ function generateExcerpt(content: string, length: number = 150): string {
 }
 
 export async function buildCollections(): Promise<Collections> {
-  console.log(chalk.blue("📦 Building collections..."));
+ // console.log(chalk.blue("📦 Building collections..."));
   
   try {
     const site = await loadSiteData();
-    console.log(chalk.green("✅ Site data loaded:", site.title));
+//    console.log(chalk.green("✅ Site data loaded:", site.title));
     
     const collections: Collections = { 
       posts: [], 
@@ -75,20 +75,20 @@ export async function buildCollections(): Promise<Collections> {
       const staticPages = await loadStaticPages();
       if (staticPages.length > 0) {
         collections.pages = staticPages;
-        console.log(chalk.green(`✅ ${staticPages.length} static pages loaded`));
+  //      console.log(chalk.green(`✅ ${staticPages.length} static pages loaded`));
       }
       
       // Load collections from subdirectories
       for (const entry of entries) {
         if (entry.isDirectory() && entry.name !== '_data') {
           const collectionName = entry.name;
-          console.log(chalk.blue(`📂 Found collection: ${collectionName}`));
+   //       console.log(chalk.blue(`📂 Found collection: ${collectionName}`));
           
           const items = await loadCollection(collectionName);
           
           if (items.length > 0) {
             collections[collectionName] = items;
-            console.log(chalk.green(`✅ ${items.length} ${collectionName} items loaded`));
+     //       console.log(chalk.green(`✅ ${items.length} ${collectionName} items loaded`));
           }
         }
       }
@@ -281,7 +281,7 @@ async function parseMarkdownFile(filePath: string): Promise<Post | null> {
     
     if (hasShortcodes) {
       const fileName = path.basename(filePath);
-      console.log(chalk.cyan(`🔍 Found shortcodes in ${fileName}`));
+ //     console.log(chalk.cyan(`🔍 Found shortcodes in ${fileName}`));
       
       try {
         // Dynamic import to avoid circular dependency
@@ -303,9 +303,9 @@ async function parseMarkdownFile(filePath: string): Promise<Post | null> {
         const remainingShortcodes = /{%\s*\w+(?:-\w+)*\s*.*?%}/.test(processedContent);
         
         if (!remainingShortcodes) {
-          console.log(chalk.green(`✅ All shortcodes processed in ${fileName}`));
+   //       console.log(chalk.green(`✅ All shortcodes processed in ${fileName}`));
         } else {
-          console.warn(chalk.yellow(`⚠️ Some shortcodes remain unprocessed in ${fileName}`));
+//          console.warn(chalk.yellow(`⚠️ Some shortcodes remain unprocessed in ${fileName}`));
         }
         
       } catch (shortcodeError) {

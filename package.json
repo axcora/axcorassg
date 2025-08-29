@@ -1,15 +1,21 @@
 {
   "name": "axcora",
-  "version": "1.0.0-alfa",
+  "version": "1.0.1-heroes",
   "description": "Modern and Super Light Static Site Generator",
   "bin": {
     "axcora": "dist/cli/index.js"
   },
   "main": "dist/index.js",
   "type": "module",
-  "files": [    "dist/",
+  "files": [
+    "src/config/",
+    "static/templates/",
     "README.md",
     "LICENSE"
+  ],
+  "private": false,
+  "workspaces": [
+    "src/components/package/*"
   ],
   "scripts": {
     "test-css": "node scripts/test-css-simple.js",
@@ -80,7 +86,7 @@
   "author": {
     "name": "Axcora Team",
     "email": "axcora@gmail.com",
-    "url": "https://axcora.com/"
+    "url": "https://www.axcora.com/"
   },
   "license": "MIT",
   "engines": {
@@ -88,6 +94,10 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
+    "axcora-accordion": "^1.0.0",
+    "axcora-button": "^1.0.0",
+    "axcora-theme-cyberpunk": "^1.0.0",
+    "axcora-theme-essentials": "^1.0.0",
     "chalk": "^5.3.0",
     "chokidar": "^3.6.0",
     "clean-css": "^5.3.3",
@@ -123,7 +133,7 @@
   },
   "axcora": {
     "framework": {
-      "version": "2.0.0",
+      "version": "1.0.0",
       "components": 22,
       "features": [
         "Modern 2025 Design",

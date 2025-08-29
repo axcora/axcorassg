@@ -1,0 +1,12 @@
+{
+  "name": "axcora-js",
+  "version": "1.0.1",
+  "files": [   "accordion.js", "axcora.js", "axcora.min.js", "button.js", "carousel.js", "dropdown.js", 
+  "modal.js",   "navbar.js","scrollspy.js", "search.js", "tabs.js", "theme.js", 
+  "toast.js", "youtube.js"
+  ],
+  "main": "",
+  "author": "Axcora Team",
+  "license": "MIT",
+  "keywords": [ "axcora", "js", "components", "ssg" ]
+}

@@ -33,7 +33,7 @@ export class PluginManager {
     for (const pluginName of pluginNames) {
       try {
         // Implementation for loading plugins
-        console.log(`Loading plugin: ${pluginName}`);
+   //     console.log(`Loading plugin: ${pluginName}`);
       } catch (error) {
         const errorMsg = error instanceof Error ? error.message : 'Unknown error';
         console.warn(`Failed to load plugin ${pluginName}:`, errorMsg);

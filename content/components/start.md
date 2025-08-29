@@ -35,10 +35,10 @@ js:
   js:
     - axcora
   ```
-  This approach ensures you get every feature, but for optimal performance, you can tailor individual pages or themes with just the components required[2][4].
+  This approach ensures you get every feature, but for optimal performance, you can tailor individual pages or themes with just the components required.
 
 - **Automatic Minification:**  
-  Every CSS and JS component you use—regardless of theme or per-article—will be auto-minified by Axcora during build. This keeps builds lightweight, fast, and efficient[2].
+  Every CSS and JS component you use—regardless of theme or per-article—will be auto-minified by Axcora during build. This keeps builds lightweight, fast, and efficient.
 
 - **Ready-to-Use Themes:**  
   Select from a range of built-in visual styles to match your project’s tone:
@@ -61,7 +61,7 @@ js:
   Or include `axcora` for all.
 
 - **Best Practice Asset Loading:**  
-  By only serving the assets you use, Axcora empowers fast, scalable, and maintainable site builds—optimized for SEO, user experience, and server speed[2][4].
+  By only serving the assets you use, Axcora empowers fast, scalable, and maintainable site builds—optimized for SEO, user experience, and server speed.
 
 ### Example Usage
 

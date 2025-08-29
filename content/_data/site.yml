@@ -1,7 +1,8 @@
 # Site Information
 title: "Axcora Framework"
 description: "Modern static site generator with built-in CSS framework"
-url: "https://axcorassg.vercel.app"
+url: "https://ssg.axcora.com"
+#url: http://localhost:3000
 author: "Axcora Team"
 image: "/img/axs.jpg"
 logo: "/img/logo.png"
@@ -20,12 +21,18 @@ theme:
   enable_dark_mode: true
   default_theme: "light"
 
+
 # Social Media
 social:
-  twitter: "https://twitter.com/axcora"
-  github: "https://github.com/axcora/axcora"
-  linkedin: "https://linkedin.com/company/axcora"
-  youtube: "https://youtube.com/@axcora"
+ - name: Github Sponsor
+   url: "https://github.com/sponsors/mesinkasir"
+ - name: Via Gumroad
+   url: "https://creativitaz.gumroad.com/coffee"
+ - name: Via Paypal
+   url: "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JVZVXBC4N9DAN"
+ - name: Via Midtrans
+   url: "https://app.midtrans.com/payment-links/1647457988722"
+
 
 # Navigation Menu
 navbar:
@@ -48,19 +55,7 @@ navbar:
 #  - title: "Categories"
 #    url: "/categories/"
   - title: "Support"
-    url: "/about/"
-
-# Footer Links
-footer:
-  links:
-    - title: "Getting Started"
-      url: "/docs/getting-started/"
-    - title: "Components"
-      url: "/docs/components/"
-    - title: "GitHub"
-      url: "https://github.com/axcora/axcora"
-    - title: "Support"
-      url: "/support/"
+    url: "/support/"
 
 # SEO Settings
 seo:

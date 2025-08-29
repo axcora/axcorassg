@@ -2,6 +2,12 @@
 
 ### axcorassg
 
+```
+npm i -g axcora
+
+
+```
+
 Axcora Static Site Generator
 
 For speed and peformance !!

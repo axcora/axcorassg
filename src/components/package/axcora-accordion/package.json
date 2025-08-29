@@ -1,0 +1,16 @@
+{
+  "name": "axcora-accordion",
+  "version": "1.0.0",
+  "description": "Accordion component for axcora SSG",
+  "main": "axcora-accordion.axc",
+  "files": [    "axcora-accordion.axc"
+  ],
+  "keywords": [    "axcora",
+    "accordion",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

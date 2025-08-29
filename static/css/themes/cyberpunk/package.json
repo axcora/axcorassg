@@ -1,0 +1,10 @@
+{
+  "name": "axcora-theme-cyberpunk",
+  "version": "1.0.0",
+  "description": "cyberpunk theme for axcora",
+  "main": "theme.css",
+  "files": [    "theme.css"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

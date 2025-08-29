@@ -1,0 +1,17 @@
+{
+  "name": "axcora-image-fluid",
+  "version": "1.0.0",
+  "description": "Axcora Image fluid component for axcora SSG",
+  "main": "axcora-image-fluid.axc",
+  "files": [    "axcora-image-fluid.axc"
+  ],
+  "keywords": [    "axcora",
+    "image",
+    "fluid",
+    "component",
+    "shortcode",
+    "static-site-generator"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

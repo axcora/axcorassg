@@ -9,10 +9,10 @@ hero:
  version: 🚀 Axcora v1.0 is launch now!
  button1: 
    text: 📚 View Documentation
-   url: /
+   url: /install/
  button2: 
    text:  🎯 Explore Components
-   url: /
+   url: /components/
  info: 
    - title: 15.6KB
      text: Base
@@ -20,8 +20,8 @@ hero:
      text: Essentilas
    - title: 43.7KB
      text: Minified
-   - title: 60.3KB
-     text: Complete
+   - title: 11.8KB
+     text: Javascript
 features:
  title: 🚀 Key Features
  section1:
@@ -38,21 +38,24 @@ features:
       - text: "installation axcora"
         sort: "1"
         command: "npm install axcora"
-      - text: "First Run"
-        sort: "2"
-        command: "npm run build && npm run axcora"
       - text: "Check Version"
-        sort: "3"
+        sort: "2"
         command: "axcora -version"
+      - text: "First Project"
+        sort: "3"
+        command: "axcora init myproject && cd myproject"
       - text: "Dev mode"
         sort: "4"
         command: "axcora dev"
-      - text: "Build Production"
+      - text: "Open Browser"
         sort: "5"
+        command: "http://localhost:3000"
+      - text: "Build Production"
+        sort: "6"
         command: "axcora build"
       - text: "Run Serve"
-        sort: "6"
-        command: "axcora start"
+        sort: "7"
+        command: "axcora serve"
   css: 
     title: Get Start with Axcora CSS Framework
     text: How to use axcora css framework for your projects.
@@ -62,9 +65,15 @@ features:
     npm:
       text: Install Via NPM
       command: "npm install axcora css"
+    node:
+      text: Import from Node Modules
+      command: '&lt;link href="/node_modules/css/axcora.min.css" rel="stylesheet"/&gt;'
     cdn:
-      text: Inject from CDN
-      command: '&lt;link href="/css/axcora.min.css" rel="stylesheet"/&gt;'
+      text: Inject CSS from CDN
+      command: '&lt;link href="https://cdn.jsdelivr.net/npm/axcora-css@1.0.1/axcora.min.css" rel="stylesheet"/&gt;'
+    js:
+      text: Inject JS from CDN
+      command: '&lt;script src="https://cdn.jsdelivr.net/npm/axcora-js@1.0.1/axcora.min.js"&gt;&lt;/script&gt;'
  section2:
   title: CSS Framework, Modular & Themed
   icon: /img/icon/modules.svg

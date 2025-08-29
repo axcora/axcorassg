@@ -1,0 +1,10 @@
+{
+  "name": "axcora-theme-essentials",
+  "version": "1.0.0",
+  "description": "Essentials theme for axcora",
+  "main": "theme.css",
+  "files": [    "theme.css"
+  ],
+  "author": "Axcora Team",
+  "license": "MIT"
+}

@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && npx axcora build"
+  command = "npm install && npm run build"
   publish = "public"
 
 [build.environment]
