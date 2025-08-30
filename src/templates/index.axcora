@@ -119,11 +119,11 @@ js:
 <div class="col-md-4 p-5">
   <h3>{{features.section1.css.title}}</h3>
   <p>{{features.section1.css.text}}</p>
-  <p>
+  <!-- <p>
     <a href="{{features.section1.css.button.url}}" class="btn btn-sm btn-primary">
       {{features.section1.css.button.text}}
     </a>
-  </p>
+  </p> -->
 <div class="row">
   <div class="col-md-12 p-3">
     {{features.section1.css.npm.text}}
