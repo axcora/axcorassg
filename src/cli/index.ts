@@ -451,28 +451,28 @@ async function cleanPublicDirectory() {
 
 async function initProject(projectName: string) {
   const targetDir = path.join(process.cwd(), projectName);
-  const templateDir = path.resolve(process.cwd(), "static", "templates", "default"); // path sumber kamu
+  const templateDir = path.resolve(process.cwd(), "static", "templates", "default"); 
 
   try {
-    // Cek jika project sudah ada
     try {
       await fs.access(targetDir);
       console.log(chalk.yellow(`⚠️  Directory '${projectName}' already exists!`));
       return;
     } catch {
-      // Lanjut...
+      
     }
 
     // Copy folder template rekursif 👇
-    await fs.cp(templateDir, targetDir, { recursive: true, force: true }); // Node.js v16.7+ [3][5]
+    await fs.cp(templateDir, targetDir, { recursive: true, force: true }); 
 
     console.log(chalk.green(`✅ Project '${projectName}' initialized successfully!`));
     console.log(chalk.cyan(`📁 Location: ${targetDir}`));
     console.log(chalk.gray('\n💡 Next steps:'));
     console.log(chalk.gray(`   cd ${projectName}`));
     console.log(chalk.gray('   npm install'));
-    console.log(chalk.gray('   npm run axcora'));
-    console.log(chalk.gray('   npm run dev or axcora dev'));
+    console.log(chalk.gray('   axcora dev'));
+    console.log(chalk.gray('   or'));
+    console.log(chalk.gray('   npm run dev'));
   } catch (error) {
     throw new Error(`Failed to initialize project: ${error}`);
   }

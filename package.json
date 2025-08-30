@@ -1,14 +1,13 @@
 {
   "name": "axcora",
-  "version": "1.0.1-heroes",
+  "version": "1.0.1-athena",
   "description": "Modern and Super Light Static Site Generator",
   "bin": {
     "axcora": "dist/cli/index.js"
   },
   "main": "dist/index.js",
   "type": "module",
-  "files": [
-    "src/config/",
+  "files": [ "dist/",
     "static/templates/",
     "README.md",
     "LICENSE"
@@ -86,7 +85,7 @@
   "author": {
     "name": "Axcora Team",
     "email": "axcora@gmail.com",
-    "url": "https://www.axcora.com/"
+    "url": "https://ssg.axcora.com/"
   },
   "license": "MIT",
   "engines": {

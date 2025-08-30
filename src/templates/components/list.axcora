@@ -1,5 +1,5 @@
 ---
-layouts: base
+layouts: home
 css:
   theme: 'essentials'
   components:

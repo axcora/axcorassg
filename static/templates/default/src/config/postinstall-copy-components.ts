@@ -51,7 +51,7 @@ if (fs.existsSync(baseCssSrc)) {
 }
 
 // Helper copy + counter
-function copyFileCount(src, dst) {
+function copyFileCount(src: string, dst: string) {
   if (fs.existsSync(src)) {
     fs.mkdirSync(path.dirname(dst), { recursive: true });
     fs.copyFileSync(src, dst);

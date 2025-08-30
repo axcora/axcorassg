@@ -115,7 +115,7 @@
 
     server.on("error", (err) => {
         if (err.code === "EADDRINUSE") {
-            console.error(chalk.red("Server sudah berjalan/listen pada port itu."));
+            console.error(chalk.red("Server is running on this port."));
             process.exit(1);
         }
     });

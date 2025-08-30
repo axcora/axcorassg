@@ -1,5 +1,5 @@
 ---
-layouts: base
+layouts: home
 ---
 <main class="container">
 <div class="card p-3 content-start p-3 mb-3">
