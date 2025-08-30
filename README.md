@@ -42,6 +42,15 @@ upload your public folder into your host
 axcora serve
 ```
 
+Clone Starter Project
+```bash
+git clone https://github.com/mesinkasir/axcora-starter.git
+cd axcora-starter
+npm install
+npm run dev
+open http://localhost:3000
+```
+
 ---
 
 ## 🙌 Support This Project
