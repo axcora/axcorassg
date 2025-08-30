@@ -67,7 +67,7 @@ features:
       command: "npm install axcora css"
     node:
       text: Import from Node Modules
-      command: '&lt;link href="/node_modules/css/axcora.min.css" rel="stylesheet"/&gt;'
+      command: 'import "axcora-css/axcora.min.css";'
     cdn:
       text: Inject CSS from CDN
       command: '&lt;link href="https://cdn.jsdelivr.net/npm/axcora-css@1.0.1/axcora.min.css" rel="stylesheet"/&gt;'
