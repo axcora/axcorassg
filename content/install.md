@@ -17,8 +17,8 @@ This guide walks you through installation, setup, and daily use—making your ex
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/axcora/axcora-ssg.git
-cd axcora-ssg
+git clone https://github.com/mesinkasir/axcora-starter.git
+cd axcora-starter
 npm install
 ```
 
@@ -29,9 +29,7 @@ npm install
 Before using the CLI everywhere, compile and link it globally:
 
 ```bash
-npm run axcora
-# or
-npm run install-global
+npm install axcora
 ```
 
 This step will:
@@ -48,27 +46,15 @@ After the CLI is linked, you **no longer need to use npm scripts** for core work
 Just use the CLI directly!
 
 ```bash
-axcora dev        # Launch native development server (hot reload, recommended for normal development)
-axcora build      # Build your static site for production
-axcora serve      # Serve the built site (public folder) locally
-axcora new "Post Title"  # Create a new blog post
-axcora clean      # Clean the build output directory
-axcora docs       # Generate documentation
-axcora help       # Shows CLI help and command list
+axcora dev        			# Launch native development server (hot reload, recommended for normal development)
+axcora build      			# Build your static site for production
+axcora serve      			# Serve the built site (public folder) locally
+axcora init myu project		# build a new axcora project
+axcora new "Post Title"  	# Create a new blog post
+axcora help       			# Shows CLI help and command list
 ```
 
 You can run these commands from any terminal, in your project directory.
-
----
-
-### 4. **Advanced/Legacy Workflows (Optional)**
-
-If you want extra live reload features, or try alternative development flows, you can use legacy npm scripts:
-
-```bash
-npm run dev       # Dev server with enhanced browser live reload (browser-sync/etc)
-npm run lite      # Super lightweight dev server—fast but minimal
-```
 
 ---
 
@@ -94,8 +80,7 @@ axcora new "Title" # Create new blog post/page
 | `axcora build`     | Build the static site for production                    |
 | `axcora serve`     | Serve the public folder locally for preview             |
 | `axcora new`       | Create new blog post                                    |
-| `axcora docs`      | Generate CSS/documentation                              |
-| `axcora clean`     | Clean public/output directory                           |
+| `axcora init`      | Create new axcora  project                              |
 | `axcora help`      | Show CLI help and available commands                    |
 
 ---
