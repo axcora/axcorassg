@@ -30,7 +30,12 @@ The **Glass component** in Axcora SSG brings a stylish, modern glassmorphism eff
 **installation**
 
 ```bash
+# default glass
 npm i axcora-glass
+# 2 grid glass
+npm i axcora-glass-2
+# 3 grid glass
+npm i axcora-glass-3
 ```
 
 ---

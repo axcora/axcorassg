@@ -27,7 +27,18 @@ The **Card component** in Axcora SSG provides a flexible, modern way to display 
 **installation**
 
 ```bash
+# 1 card
 npm i axcora-card
+# 2 card
+npm i axcora-card-2
+# 3 card
+npm i axcora-card-3
+# simple card
+npm i axcora-card-simple
+# 2 simple card
+npm i axcora-card-2-simple
+# 3 simple card
+npm i axcora-card-3-simple
 ```
 
 ## Usage in Templates

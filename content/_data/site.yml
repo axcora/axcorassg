@@ -48,6 +48,8 @@ navbar:
     url: "/components/"
   - title: "CSS" 
     url: "/examples/"
+  - title: "Themes" 
+    url: "/themes/"
 #  - title: "Blog" 
 #    url: "/blog/"
 #  - title: "Tags"

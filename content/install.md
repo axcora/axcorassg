@@ -6,7 +6,7 @@ description: About installation
 ## **Axcora SSG + CSS Framework — CLI Quickstart Guide**
 
 Axcora is a modern, open source Static Site Generator & CSS framework.  
-This guide walks you through installation, setup, and daily use—making your experience as smooth as Next.js or Astro.
+This guide walks you through installation, setup, and daily use—making your experience as smooth.
 
 ---
 

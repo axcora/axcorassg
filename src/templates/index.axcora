@@ -34,7 +34,7 @@ js:
         <a href="{{hero.button1.url}}" class="btn btn-dark btn-lg">
           {{hero.button1.text}}
         </a>
-        <a href="{{hero.button2.url}}" class="btn btn-warning btn-lg">
+        <a href="{{hero.button2.url}}" class="btn btn-danger btn-lg">
           {{hero.button2.text}}
         </a>
       </div>
