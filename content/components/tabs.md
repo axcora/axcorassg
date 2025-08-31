@@ -25,6 +25,12 @@ js:
 ---
 The **Tabs component** in Axcora SSG allows you to organize and display segmented content in a modern tabbed interface, offering users rapid switching between panels. Tabs may be configured and used per-template or directly in article content, providing flexibility for documentation, feature comparisons, dashboards, and more.
 
+**installation**
+
+```bash
+npm i axcora-tabs
+```
+
 ---
 
 ## 1. Enabling Tabs Components

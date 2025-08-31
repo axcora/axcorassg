@@ -29,6 +29,12 @@ js:
 
 To use the Accordions component in Markdown documents, you must first import the component into your template or content/*.md markdown file (for example, in templates/blog/single or layout/page.axcora or in to your content/blog/*.md). This is done by defining it in the front matter of your page. Here is a standard example:
 
+**installation**
+
+```
+npm i axcora-accordion
+```
+
 on templates
 
 ```

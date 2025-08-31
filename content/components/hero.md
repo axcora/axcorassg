@@ -25,6 +25,14 @@ js:
 ---
 The **Hero component** in Axcora SSG provides a flexible, visually prominent section for highlighting key messages, calls-to-action, or feature introductions. You can use hero components in templates as well as Markdown article content, making it ideal for headlines, landing pages, or any content that benefits from strong first impressions.
 
+**installation**
+
+```bash
+npm i axcora-hero
+or hero with button
+npm i axcora-hero-button
+```
+
 ---
 
 ## 1. Enabling the Hero Component

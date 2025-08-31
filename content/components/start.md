@@ -23,6 +23,17 @@ js:
 ---
 **Axcora** is an **all-in-one static site generator (SSG) and CSS framework** designed to make web development faster and more efficient for developers. Its core approach is flexibility: you select only the CSS and JS components you need for each theme or per-article, and Axcora automatically minifies and serves just the required assets per page. This means your site loads faster and follows modern best practices by avoiding unnecessary code.
 
+**installation**
+
+```bash
+# Axcora SSG installation
+npm i axcora
+# Axcora CSS Installation
+npm i axcora-css
+# Axcora Js installation
+npm i axcora-js
+```
+
 ### Key Features
 
 - **Flexible CSS & JS Component Inclusion:**  

@@ -24,6 +24,12 @@ js:
 ---
 The **Button component** in Axcora SSG provides a versatile and customizable way to add interactive elements for navigation and user actions throughout your site. This component supports a variety of styles and behaviors, and can be used both within your templates and your article content.
 
+**installation**
+
+```
+npm i axcora-button
+```
+
 ## Usage in Templates
 
 To use button components **per template**, import the component within your template’s front-matter. For example, in `templates/blog/single.axcora` or `templates/blog/list.axcora`:

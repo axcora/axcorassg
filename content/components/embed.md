@@ -24,6 +24,12 @@ js:
 ---
 The **iframe component** in Axcora SSG allows you to embed external content—such as videos, web pages, or interactive widgets—directly within your templates or Markdown-based article content. This is achieved using a flexible, responsive component with modern styling and several aspect ratio options.
 
+**installation**
+
+```
+npm i axcora-iframe
+```
+
 ## Usage in Templates
 
 To enable the iframe component for a template, import it in your template’s front-matter. For example, in `templates/blog/single.axcora`:

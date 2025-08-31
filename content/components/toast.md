@@ -25,6 +25,12 @@ js:
 ---
 The **Toast component** in Axcora SSG provides a modern, animated way to display temporary notifications or feedback messages to users. Toasts are ideal for success confirmations, error alerts, warnings, or quick info messages, and can be used both in site templates and in Markdown-powered content.
 
+**installation**
+
+```bash
+npm i axcora-toast
+```
+
 ---
 
 ## 1. Enabling Toast Components

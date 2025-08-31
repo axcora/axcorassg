@@ -25,6 +25,12 @@ js:
 ---
 Certainly. Here is a technical documentation article for the **Axcora SSG Search Component**, in clear and structured English.
 
+**installation**
+
+```bash
+npm i axcora-search
+```
+
 ---
 The **Axcora SSG** (Static Site Generator) provides a flexible component system to enhance your website with interactive features, such as the `search` component. This system allows you to use components both at the template level (site-wide) and within individual content (per-article), offering granular control over your site's features.
 

@@ -25,6 +25,12 @@ js:
 ---
 The **Axcora SEO Component** (`axcora-seo`) is an automated SEO injection system designed to simplify and optimize the process of adding structured SEO metadata to static and JAMSTACK-based websites. This component auto-generates and injects keywords, meta descriptions, Open Graph tags, Twitter Cards, ensuring your content is SEO-ready without manual editing for each page.
 
+**installation**
+
+```bash
+npm i axcora-seo
+```
+
 ---
 
 ## What Is `axcora-seo`?

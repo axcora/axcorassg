@@ -26,6 +26,12 @@ js:
 ---
 The **Carousel component** in Axcora SSG allows you to create modern, interactive slideshows for images and text, enhancing visual engagement on your site. Carousels are fully responsive and accessible, enabling content rotation both within templates and Markdown content.
 
+**installation**
+
+```
+npm i axcora-carousel
+```
+
 ## Usage in Templates
 
 To enable the carousel component, import it in your template’s front-matter, for example in `templates/blog/single.axcora` or `templates/blog/list.axcora`:

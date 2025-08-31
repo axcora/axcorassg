@@ -25,6 +25,11 @@ js:
 ---
 The **Modal component** in Axcora SSG provides a modern, accessible popup dialog that can be used to display key information, prompts, forms, images, or complex content as overlays. Modals can be integrated seamlessly in both your templates and Markdown content, supporting advanced layouts and interactive features.
 
+**installation**
+
+```bash
+npm i axcora-modal
+```
 ---
 
 ## 1. Enabling Modal Components

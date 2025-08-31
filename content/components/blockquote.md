@@ -25,6 +25,12 @@ js:
 ---
 The **Blockquote component** in Axcora SSG provides a visually appealing way to display quotations, statements, or testimonials, allowing emphasis and proper attribution for quoted material within both templates and article content.
 
+**installation**
+
+```
+npm i axcora-blockquote
+```
+
 ## Usage in Templates
 
 Axcora SSG allows blockquote components to be imported **per-template** for consistent styling across pages. To use the blockquote, include it in your template's front-matter (for example, in `templates/blog/single.axcora` or `templates/blog/list.axcora`):

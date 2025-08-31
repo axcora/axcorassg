@@ -49,8 +49,8 @@ Just use the CLI directly!
 axcora dev        			# Launch native development server (hot reload, recommended for normal development)
 axcora build      			# Build your static site for production
 axcora serve      			# Serve the built site (public folder) locally
-axcora init myu project		# build a new axcora project
-axcora new "Post Title"  	# Create a new blog post
+axcora init myproject      			# Create new axcora project
+axcora new "Post Title"      			# Create a new blog post
 axcora help       			# Shows CLI help and command list
 ```
 
@@ -62,8 +62,8 @@ You can run these commands from any terminal, in your project directory.
 
 ```bash
 npm install        # Install dependencies (once)
+npm install axcora        # Install axcora dependencies (once)
 npm run axcora     # Build & link CLI globally (once or on updates)
-
 axcora dev         # Develop your static site
 axcora build       # Build for production
 axcora serve       # Preview build output locally

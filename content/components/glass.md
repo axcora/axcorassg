@@ -27,6 +27,12 @@ js:
 
 The **Glass component** in Axcora SSG brings a stylish, modern glassmorphism effect to your content blocks. This component is perfect for drawing attention to important information or adding visual flair to your layouts. You can use the glass component anywhere in your templates or within your Markdown content, ensuring both flexibility and consistency.
 
+**installation**
+
+```bash
+npm i axcora-glass
+```
+
 ---
 
 ## 1. Enabling Glass Component

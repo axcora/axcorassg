@@ -26,6 +26,12 @@ js:
 
 The **Scrollspy component** in Axcora SSG provides dynamic navigation tracking that highlights which section of the page is currently being viewed by the user. It is designed to improve user experience for long-form articles, documentation, and landing pages by giving a clear visual indication of the active section[4][5].
 
+**installation**
+
+```bash
+npm i axcora-scrollspy
+```
+
 ---
 
 ## Features

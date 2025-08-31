@@ -25,6 +25,12 @@ js:
 ---
 The Badge component in Axcora SSG provides a modern, flexible way to highlight statuses, categories, or metadata within your templates and article content. It supports various color schemes, sizing options, and usage patterns to best fit your site's design and functional needs.
 
+**installation**
+
+```
+npm i axcora-badge
+```
+
 ### Usage in Templates
 
 Axcora SSG badges can be imported on a per-template basis, allowing you to embed badge elements across pages consistently. To enable the badge component, add it to your template's front-matter, for example in templates/blog/single.axcora or templates/blog/list.axcora:

@@ -23,6 +23,25 @@ js:
 ---
 The **Image components** in Axcora SSG provide a robust and flexible way to display images responsively on your site, supporting a range of use cases from simple inline images to aspect-ratio-controlled covers and thumbnails. Axcora SSG enables you to import these components per template or use them directly in your Markdown content, with clear distinction between usage in templating and markdown.
 
+**installation**
+
+```bash
+# fluid image
+npm i image-fluid
+
+# image
+npm i axcora-image
+
+# cover image
+npm i axcora-cover
+
+# fluid thumbnail
+npm i axcora-thumbnail
+
+# ratio image
+npm i axcora-ratio
+```
+
 Example:
 {% axcora-image-responsive title="Title" image="/img/ax.jpg" loading="lazy" /%}
 

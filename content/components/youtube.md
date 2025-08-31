@@ -26,6 +26,12 @@ js:
 
 The **youtube-lite component** in Axcora SSG enables highly performant, low-bandwidth embedding of YouTube videos, ensuring your pages load quickly and honor modern web performance standards. It uses a "lite" embedding method, similar to Lite YouTube Embed, which defers loading the actual YouTube player until the user interacts, delivering a preview image and very small initial payload until play is requested.
 
+**installation**
+
+```bash
+npm i axcora-youtube
+```
+
 ---
 
 ## 1. Enabling the YouTube Lite Component

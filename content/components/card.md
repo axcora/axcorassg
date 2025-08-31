@@ -24,6 +24,12 @@ js:
 ---
 The **Card component** in Axcora SSG provides a flexible, modern way to display grouped content, such as titles, descriptions, and footers, in a structured container. Cards can be used for articles, product features, profiles, and more, and are available both in templates and article content with easy-to-use options and layouts.
 
+**installation**
+
+```bash
+npm i axcora-card
+```
+
 ## Usage in Templates
 
 To enable card components, import them per template in your template’s front-matter—for example, in `templates/blog/single.axcora` or `templates/blog/list.axcora`:

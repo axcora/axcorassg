@@ -25,6 +25,12 @@ js:
 
 The **Video component** in Axcora SSG allows you to seamlessly embed responsive, aspect-ratio-controlled video content directly in your templates or Markdown-based content. This component supports common video formats, local files, and accommodates accessibility via `alt` text, while automatically adapting to various layouts and device screens.
 
+**installation**
+
+```bash
+npm i axcora-video
+```
+
 ---
 
 ## 1. Enabling the Video Component
