@@ -169,12 +169,12 @@ js:
     <div class="bg-dark text-light p-1 rounded-md">
       <div style="display: flex; justify-content: flex-end;">
         <button
-          onclick="copyCommand('commandCDN')"
+          onclick="copyCommand('commandCDNjs')"
           class="btn btn-primary btn-sm">
           Copy
         </button>
       </div>
-      <pre class="p-2"><code id="commandCDN">{{features.section1.css.js.command}}</code></pre>
+      <pre class="p-2"><code id="commandCDNjs">{{features.section1.css.js.command}}</code></pre>
     </div>
   </div>
 </div>
