@@ -9,7 +9,7 @@
 
 ---
 
-## 🌐 Documentation
+## 🌐 Documentations
 
 - 📚 [Official Docs](https://ssg.axcora.com)
 - 🧩 [Component Library](https://ssg.axcora.com/components)

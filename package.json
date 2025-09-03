@@ -1,6 +1,6 @@
 {
   "name": "axcora",
-  "version": "1.0.1-athena",
+  "version": "1.0.1-athenas",
   "description": "Modern and Super Light Static Site Generator",
   "bin": {
     "axcora": "dist/cli/index.js"
@@ -132,7 +132,7 @@
   },
   "axcora": {
     "framework": {
-      "version": "1.0.0",
+      "version": "1.0.1-athenas",
       "components": 22,
       "features": [
         "Modern 2025 Design",

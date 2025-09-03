@@ -125,7 +125,7 @@ js:
     </a>
   </p> -->
 <div class="row">
-  <div class="col-md-12 p-3">
+  <div class="col-12 p-3">
     {{features.section1.css.npm.text}}
     <div class="bg-dark text-light p-1 rounded-md">
       <div style="display: flex; justify-content: flex-end;">
@@ -138,7 +138,7 @@ js:
       <pre class="p-2"><code id="commandNPM">{{features.section1.css.npm.command}}</code></pre>
     </div>
   </div>
-  <div class="col-md-12 p-3">
+  <div class="col-12 p-3">
     {{features.section1.css.node.text}}
     <div class="bg-dark text-light p-1 rounded-md">
       <div style="display: flex; justify-content: flex-end;">
@@ -151,7 +151,7 @@ js:
       <pre class="p-2"><code id="commandNode">{{features.section1.css.node.command}}</code></pre>
     </div>
   </div>
-  <div class="col-md-12 p-3">
+  <div class="col-12 p-3">
     {{features.section1.css.cdn.text}}
     <div class="bg-dark text-light p-1 rounded-md">
       <div style="display: flex; justify-content: flex-end;">
@@ -164,7 +164,7 @@ js:
       <pre class="p-2"><code id="commandCDN">{{features.section1.css.cdn.command}}</code></pre>
     </div>
   </div>
-  <div class="col-md-12 p-3">
+  <div class="col-12 p-3">
     {{features.section1.css.js.text}}
     <div class="bg-dark text-light p-1 rounded-md">
       <div style="display: flex; justify-content: flex-end;">
